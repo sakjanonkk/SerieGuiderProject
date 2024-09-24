@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button, buttonVariants } from "./ui/button";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
+import UserAccountNav from "./UserAccountNav";
+import { buttonVariants } from "./ui/button";
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
@@ -16,7 +17,7 @@ const Navbar = async () => {
           <Image src="/blacklogo.png" alt="Logo" width={100} height={100} />
         </Link>
         {session?.user ? (
-          <Button variant="destructive">Sign Out</Button>
+          <UserAccountNav />
         ) : (
           <Link href="/sign-in" className={buttonVariants()}>
             Sign in
