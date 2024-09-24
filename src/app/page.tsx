@@ -1,7 +1,16 @@
-import React from 'react'
+import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+import React from "react";
 
 const page = () => {
-  return <h1 className='text-xl'>Home</h1>
-}
+  return (
+    <div>
+      HOME
+      <Link className={buttonVariants()} href="/admin">
+        Open My Admin
+      </Link>
+    </div>
+  );
+};
 
-export default page
+export default page;
