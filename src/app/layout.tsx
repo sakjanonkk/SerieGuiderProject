@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import "./globals.css";
+import Navbar from '@/components/Navbar';
+import './globals.css';
 // import { IBM_Plex_Sans } from 'next/font/google';
 import { IBM_Plex_Sans_Thai } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
