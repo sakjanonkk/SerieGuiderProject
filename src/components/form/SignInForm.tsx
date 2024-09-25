@@ -16,6 +16,7 @@ import Link from "next/link";
 import GoogleSignInButton from "../GoogleSignInButton";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 // import Email from "next-auth/providers/email";
 // import { sign } from "crypto";
@@ -30,6 +31,7 @@ const FormSchema = z.object({
 
 const SignInForm = () => {
   const router = useRouter();
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -47,8 +49,13 @@ const SignInForm = () => {
 
     if (!signInData || signInData.error) {
       console.log(signInData?.error);
-      // alert(JSON.stringify(signInData?.error));
+      toast({
+        title: "Error",
+        description: "Oops! Something went wrong. Please try again.",
+        variant: "destructive",
+      });
     } else {
+      // router.refresh();
       router.push("/admin");
     }
   };
