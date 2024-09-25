@@ -18,7 +18,8 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
+  /* font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif; */
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {

@@ -8,6 +8,7 @@ const ibmPlexSansThai = IBM_Plex_Sans_Thai({
   style: ['normal'],
 });
 
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' className={ibmPlexSansThai.className}>
