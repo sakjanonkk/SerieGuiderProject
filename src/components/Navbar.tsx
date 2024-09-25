@@ -14,7 +14,13 @@ const Navbar = async () => {
       <div className="container flex items-center justify-between">
         <Link href="/">
           {/* Use direct path to image in public folder */}
-          <Image src="/blacklogo.png" alt="Logo" width={100} height={100} />
+          <Image
+            src="/blacklogo(SVG).svg"
+            alt="Logo"
+            className=""
+            width={80}
+            height={80}
+          />
         </Link>
         {session?.user ? (
           <UserAccountNav />
