@@ -15,6 +15,21 @@ const Navbar = async () => {
           {/* Use direct path to image in public folder */}
           <Image src="/blacklogo.png" alt="Logo" width={100} height={100} />
         </Link>
+        <div className="flex justify-around gap-x-10">
+          <div className="Hover:">
+            <Link href="/">หน้าหลัก</Link>
+          </div>
+          <div>
+            <Link href="/serie">วิชาเสรี</Link>
+          </div>
+          <div>
+            <Link href="/">แนะนำวิชาเสรี</Link>
+          </div>
+          <div>
+            <Link href="/">เกี่ยวกับเรา</Link>
+          </div>
+        </div>
+
         {session?.user ? (
           <Button variant="destructive">Sign Out</Button>
         ) : (
