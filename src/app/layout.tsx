@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navigation/navbar";
 import "./globals.css";
 // import { IBM_Plex_Sans } from 'next/font/google';
 import { IBM_Plex_Sans_Thai } from "next/font/google";
@@ -16,9 +16,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <html lang="en" className="ibmPlexsansThai.classname">
       <body className={ibmPlexSansThai.className}>
         <Provider>
-          <main className="h-screen flex flex-col justify-center items-center">
+          {/* Layout container */}
+          <main className="h-screen flex flex-col">
+            {/* Navbar */}
             <Navbar />
-            {children}
+
+            {/* Content Section */}
+            <div className="flex-grow w-full flex justify-center items-center pt-28">
+              {/* Add padding-top to avoid navbar overlap */}
+              {children}
+            </div>
           </main>
           <Toaster />
         </Provider>
@@ -26,3 +33,4 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     </html>
   );
 }
+

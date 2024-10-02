@@ -15,7 +15,7 @@ export default async function Home() {
         {/* Logo */}
         <div className="mb-6">
           <Image
-            src="/blacklogo(SVG).svg" // ใส่ path ของโลโก้คุณ
+            src="/SerieGuideLogo/blacklogo(SVG).svg" // ใส่ path ของโลโก้คุณ
             alt="Logo"
             width={200} // กำหนดความกว้างให้กับภาพ
             height={200} // กำหนดความสูงให้กับภาพ
@@ -34,7 +34,7 @@ export default async function Home() {
         {/* Image */}
         <div className="mb-6">
           <Image
-            src="/sharing-articles-animate.svg" // ใส่ path ของรูปภาพที่คุณต้องการ
+            src="/home-page/sharing-articles-animate.svg" // ใส่ path ของรูปภาพที่คุณต้องการ
             alt="Illustration"
             width={500} // กำหนดความกว้าง
             height={400} // กำหนดความสูง
@@ -54,7 +54,7 @@ export default async function Home() {
           <Link href="/sign-in">
             <Button className="bg-white text-gray-800 hover:bg-gray-100 border border-gray-300 flex items-center justify-center w-full px-4 py-3 rounded-full">
               <Image
-                src="/google-logo-icon-.svg" // ใส่ไอคอน Google ที่ต้องการ
+                src="/home-page/google-logo-icon.svg" // ใส่ไอคอน Google ที่ต้องการ
                 alt="Google Icon"
                 width={24} // ขนาดไอคอน
                 height={24} // ขนาดไอคอน
