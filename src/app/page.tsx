@@ -9,7 +9,9 @@ import { authOptions } from "@/lib/auth";
 export default async function Home() {
   const session = await getServerSession(authOptions);
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 mx-16 my-16 mt-20">
+    // Main Container
+    <div className=" flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 mt-[140px] sm:mt-[150px] lg:mt-[120px] xl:mt-[120px] mx-4 sm:mx-8 lg:mx-12 xl:mx-16">
+
       {/* Main Section */}
       <section className="bg-white shadow-md rounded-lg p-6 sm:p-10 text-center max-w-4xl w-full">
         {/* Logo */}
@@ -30,7 +32,6 @@ export default async function Home() {
           ที่นี่คุณสามารถค้นหาข้อมูล รีวิวจากนักศึกษารุ่นพี่
           และคำแนะนำเพื่อการตัดสินใจที่ดีที่สุด
         </p>
-
         {/* Image */}
         <div className="mb-6">
           <Image
