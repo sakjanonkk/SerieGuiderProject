@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth";
 import UserAccountNav from "./UserAccountNav";
 import { buttonVariants } from "./ui/button";
 
+
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
 
