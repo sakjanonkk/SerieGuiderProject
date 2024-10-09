@@ -112,10 +112,30 @@ const pageAbout_us = () => {
           เพื่อสนับสนุนการเรียนรู้และการตัดสินใจอย่างมีประสิทธิภาพ
           โดยไม่มีการเรียกเก็บค่าใช้จ่ายใด ๆ
         </p>
-        <p className=" text-center text-[24px] font-bold">Thank You</p>
+        <p className=" text-center text-[1.5rem] font-bold">ใส่อะไรดี
+          dddddddddddddddddddddddงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงง</p>
 
         {/* Group of IMG */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-items-center mx-auto"></div>
+        <div className="flex flex-col items-center">
+        <Image
+            src="/aboutUs-page/Google-Fonts-New-Logo.png"
+            alt="Illustration"
+            width={300}
+            height={300}
+          />
+           <Image
+            src="/aboutUs-page/Story-Set-Logo.png"
+            alt="Illustration"
+            width={300}
+            height={300}
+          />
+           <Image
+            src="/aboutUs-page/unDraw-Logo.svg"
+            alt="Illustration"
+            width={200}
+            height={200}
+          />
+        </div>
       </section>
     </div>
   );

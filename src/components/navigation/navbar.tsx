@@ -96,6 +96,8 @@ import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import UserDropdown from "@/components/navigation/dropdownNav";
 import { Menu, X } from "lucide-react";
+import ExternalNavLink from '@/components/navigation/NavLink';  // ปรับ path ตามโครงสร้างโปรเจ็คของคุณ
+
 
 const Navbar: React.FC = () => {
   const { data: session } = useSession();
@@ -119,17 +121,21 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          <NavLink href="/docs1">Documentation1</NavLink>
-          <NavLink href="/docs2">Documentation2</NavLink>
-          <NavLink href="/docs3">Documentation3</NavLink>
-        </nav>
+          <ExternalNavLink href="/docs1">Documentation1</ExternalNavLink>
+          <ExternalNavLink href="/docs2">Documentation2</ExternalNavLink>
+          <ExternalNavLink href="/about-us">About Us</ExternalNavLink>
+        </nav>  
 
         {/* User Authentication Section */}
         <div className="flex items-center space-x-4">
           {session ? (
             <UserDropdown />
           ) : (
-            <Button variant="outline" asChild>
+            <Button 
+              variant="outline" 
+              asChild 
+              className="hover:bg-[#262d3e] hover:text-white transition-colors duration-200"
+            >
               <Link href="/api/auth/signin">Sign in</Link>
             </Button>
           )}
@@ -149,9 +155,9 @@ const Navbar: React.FC = () => {
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <nav className="md:hidden flex flex-col items-center mt-4 space-y-2 pb-4">
-          <NavLink href="/docs1" onClick={toggleMobileMenu}>Docs1</NavLink>
-          <NavLink href="/docs2" onClick={toggleMobileMenu}>Docs2</NavLink>
-          <NavLink href="/docs3" onClick={toggleMobileMenu}>Docs3</NavLink>
+          <ExternalNavLink href="/docs1" onClick={toggleMobileMenu}>Docs1</ExternalNavLink>
+          <ExternalNavLink href="/docs2" onClick={toggleMobileMenu}>Docs2</ExternalNavLink>
+          <ExternalNavLink href="/about-us" onClick={toggleMobileMenu}>About Us</ExternalNavLink>
         </nav>
       )}
     </header>
