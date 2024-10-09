@@ -51,6 +51,7 @@
 // export default UserDropdown;
 
 import React from "react";
+import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import {
   DropdownMenu,
@@ -63,11 +64,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { User, Settings, HelpCircle, LogOut } from "lucide-react";
 import { Session } from "next-auth";
 
-interface UserDropdownProps {
-  // Add any props if needed
-}
-
-const UserDropdown: React.FC<UserDropdownProps> = () => {
+const UserDropdown: React.FC = () => {
   const { data: session } = useSession();
 
   const handleSignOut = async () => {
@@ -77,8 +74,8 @@ const UserDropdown: React.FC<UserDropdownProps> = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="focus:outline-none focus:ring-2 focus:ring-primary rounded-full" aria-label="User menu">
-          <Avatar className="w-10 h-10 cursor-pointer transition-transform hover:scale-105">
+        <button className="focus:outline-none rounded-full" aria-label="User menu">
+          <Avatar className="w-10 h-10 cursor-pointer transition-transform hover:scale-105 shadow-md">
             <AvatarImage src={session?.user?.image ?? "/default-avatar.png"} alt={session?.user?.name ?? "User"} />
             <AvatarFallback>{getUserInitials(session)}</AvatarFallback>
           </Avatar>
@@ -101,9 +98,21 @@ const UserDropdown: React.FC<UserDropdownProps> = () => {
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-gray-100">
-          <User className="w-4 h-4" />
-          My Account
+        <DropdownMenuItem asChild>
+          {session?.user?.email ? (
+            <Link 
+              href={`/users/profile`}
+              className="flex items-center gap-2 w-full p-2 rounded-md hover:bg-gray-100 cursor-pointer"
+            >
+              <User className="w-4 h-4" />
+              My Account
+            </Link>
+          ) : (
+            <span className="flex items-center gap-2 w-full p-2 rounded-md cursor-not-allowed ">
+              <User className="w-4 h-4" />
+              My Account
+            </span>
+          )}
         </DropdownMenuItem>
 
         <DropdownMenuItem className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-gray-100">
