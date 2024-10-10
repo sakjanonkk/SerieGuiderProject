@@ -1,142 +1,143 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button"; // Import button from shadcn/ui
+import Icon from "@/components/icon/icon-lucide";
+import ProfileCard from "@/components/ui-card/cardAboutUs-page";
+import Image from "next/image";
 
+const teamMembers = [
+  {
+    name: "Nathachai Charoenchai",
+    githubUrl: "https://github.com/Trainght",
+    githubUsername: "Trainght",
+    instagramUrl: "https://www.instagram.com/ntc_chtr/",
+    instagramUsername: "ntc_chtr",
+    profileImage: "/aboutUs-page/profile-01.png",
+  },
+  {
+    name: "Teerapong Kunasit",
+    githubUrl: "https://github.com/TeerapongKunasitTK",
+    githubUsername: "TeerapongKunasitTK",
+    instagramUrl: "https://www.instagram.com/noxtee_/",
+    instagramUsername: "noxtee_",
+    profileImage: "/aboutUs-page/profile-02.png",
+  },
+  {
+    name: "Sakjanon Kamoldung",
+    githubUrl: "https://github.com/sakjanonkk",
+    githubUsername: "sakjanonkk",
+    instagramUrl: "https://www.instagram.com/beers.sk/",
+    instagramUsername: "beers.sk",
+    profileImage: "/aboutUs-page/profile-03.png",
+  },
+];
 
 const pageAbout_us = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8  mt-28">
+    <div className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 pt-4">
       {/* Main Section */}
-      <section className="bg-white shadow-md rounded-lg p-6 sm:p-10 text-center max-w-4xl w-full">
+      <section
+        className="bg-white rounded-lg p-6 sm:p-10 text-center max-w-4xl w-full"
+        style={{
+          boxShadow:
+            "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        }}
+      >
         {/* Logo */}
-        <div className="mb-7">
-          <img
-            src="/blacklogo(SVG).svg" 
+        {/* <div className="mb-7">
+          <Image
+            src="/SerieGuideLogo/blacklogo(SVG).svg"
             alt="Logo"
             className="mx-auto h-16 w-auto sm:h-24"
+          />
+        </div> */}
+        <div className="mb-7">
+          <Image
+            src="/SerieGuideLogo/blacklogo(SVG).svg" // เส้นทางของไฟล์ SVG
+            alt="Logo" // คำบรรยายของรูปภาพ (เพื่อการเข้าถึง)
+            width={80} // กำหนดความกว้าง
+            height={80} // กำหนดความสูง
+            className="mx-auto h-16 w-auto sm:h-24" // ใช้ Tailwind เพื่อทำให้ responsive
           />
         </div>
 
         {/* Title */}
-        <p className="text-[#000] text-left text-[24px] font-bold">Introduction</p>
-        <p className="text-base sm:text-lg text-gray-700 mb-6 pt-1 pl-1">
-          ยินดีต้อนรับสู่เว็บไซต์แนะนำวิชาเสรีสำหรับนักศึกษามหาวิทยาลัยขอนแก่น!
-          แพลตฟอร์มนี้ถูกสร้างขึ้นเพื่อช่วยนักศึกษาในการแลกเปลี่ยนความคิดเห็นเกี่ยวกับวิชาเสรีที่สนใจและเหมาะสมกับตน
-          ที่นี่คุณสามารถค้นหาข้อมูล รีวิวจากนักศึกษารุ่นพี่
-          และคำแนะนำเพื่อการตัดสินใจที่ดีที่สุด
+        <p className="text-[#000] text-left text-[24px] font-bold">
+          Motivation
         </p>
-        <p className=" text-center text-[24px] font-bold">Team Members</p>
-        
+        <p className="text-base sm:text-lg text-gray-700 mb-6 pt-1 pl-1">
+          เว็บไซต์แนะนำวิชาเสรีสำหรับนักศึกษามหาวิทยาลัยขอนแก่น
+          ถูกสร้างขึ้นเพื่อช่วยให้นักศึกษา
+          ค้นหาวิชาที่เหมาะสมกับตัวเองได้ง่ายขึ้น
+          ผ่านคำแนะนำจากรุ่นพี่และผู้ที่เคยเรียนมาก่อน
+          นักศึกษาจะได้รับข้อมูลที่เป็นประโยชน์ในการตัดสินใจเลือกวิชาที่ตรงกับความสนใจ
+          และเป้าหมายของตนเอง
+          นอกจากนี้ยังช่วยวางแผนการเรียนให้สอดคล้องกับแนวทางการเรียนรู้
+          เพื่อให้การเรียนในมหาวิทยาลัยเป็นไปอย่างราบรื่น
+          พร้อมทั้งช่วยให้นักศึกษาได้เรียนรู้ และสร้างสรรค์ความรู้ใหม่ ๆ
+          ที่ตอบโจทย์ความสนใจและเป้าหมายของตนเอง
+        </p>
+        <p className=" text-center text-[24px] font-bold">Team Developer </p>
+
         {/* Group of CARD */}
-        <div className="flex justify-between ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-items-center mx-auto">
           {/* CARD */}
-          <div className=" w-[250px] h-auto rounded-3xl shadow-md m-4">
-            <div className="w-auto h-[260px] flex-shrink-0  ">
-              <img
-              src="/profile-01.png"
-              alt="picture of profile"
-              className="w-full h-full object-contain rounded-tr-3xl rounded-tl-3xl"/>
-            </div>
-            <p className="mt-2">Nathachai Charoenchai</p>
-            <p className="mt-2 underline underline-offset-2 font-bold">Contact</p>
-            <div className="grid grid-cols-1 gap-4 p-4">
-              <Link href={"https://github.com/Trainght"}> 
-                <div className="flex items-center">
-                  <img  
-                    src="/icon_github.svg"
-                    alt="icon of github"
-                    className="w-[30px] h-[30px] mr-1"/>
-                  {/* github-url */}
-                  <p className="text-[14px]" >Trainght</p> 
-                </div>
-              </Link>
-              <Link href={"https://www.instagram.com/ntc_chtr/"}>
-                <div className="flex items-center">
-                  <img 
-                    src="/icon_instargram.svg"
-                    alt="icon of instagram"
-                    className="w-[30px] h-[30px] mr-1"/>
-                  {/* IG-name */}
-                  <p className="text-[14px]">ntc_chtr</p>
-                </div>  
-              </Link>
-            </div>
-          </div>
-
-          {/* CARD */}
-          <div className=" w-[250px] h-auto rounded-3xl shadow-md m-4">
-            <div className="w-auto h-[260px] flex-shrink-0  ">
-              <img
-              src="/profile-02.png"
-              alt="picture of profile"
-              className="w-full h-full object-contain rounded-tr-3xl rounded-tl-3xl"/>
-            </div>
-            <p className="mt-2">Teerapong Kunasit</p>
-            <p className="mt-2 underline underline-offset-2 font-bold">Contact</p>
-            <div className="grid grid-cols-1 gap-4 p-4">
-              <Link href={"https://github.com/TeerapongKunasitTK"}> 
-                <div className="flex items-center">
-                  <img  
-                    src="/icon_github.svg"
-                    alt="icon of github"
-                    className="w-[30px] h-[30px] mr-1"/>
-                  {/* github-url */}
-                  <p className="text-[14px]" >TeerapongKunasitTK</p> 
-                </div>
-              </Link>
-              <Link href={"https://www.instagram.com/noxtee_/"}>
-                <div className="flex items-center">
-                  <img 
-                    src="/icon_instargram.svg"
-                    alt="icon of instagram"
-                    className="w-[30px] h-[30px] mr-1"/>
-                  {/* IG-name */}
-                  <p className="text-[14px]">noxtee_</p>
-                </div>  
-              </Link>
-            </div>
-          </div>
-
-          {/* CARD */}
-          <div className=" w-[250px] h-auto rounded-3xl shadow-md m-4">
-            <div className="w-auto h-[260px] flex-shrink-0  ">
-              <img
-              src="/profile-03.png"
-              alt="picture of profile"
-              className="w-full h-full object-contain rounded-tr-3xl rounded-tl-3xl"/>
-            </div>
-            <p className="mt-2">Sakjanon Kamoldung</p>
-            <p className="mt-2 underline underline-offset-2 font-bold">Contact</p>
-            <div className="grid grid-cols-1 gap-4 p-4">
-              <Link href={"https://github.com/sakjanonkk"}> 
-                <div className="flex items-center">
-                  <img  
-                    src="/icon_github.svg"
-                    alt="icon of github"
-                    className="w-[30px] h-[30px] mr-1"/>
-                  {/* github-url */}
-                  <p className="text-[14px]" >sakjanonkk</p> 
-                </div>
-              </Link>
-              <Link href={"https://www.instagram.com/beers.sk/"}>
-                <div className="flex items-center">
-                  <img 
-                    src="/icon_instargram.svg"
-                    alt="icon of instagram"
-                    className="w-[30px] h-[30px] mr-1"/>
-                  {/* IG-name */}
-                  <p className="text-[14px]">beers.sk</p>
-                </div>  
-              </Link>
-            </div>
-          </div>
-
+          {teamMembers.map((member, index) => (
+            <ProfileCard
+              key={index}
+              name={member.name}
+              githubUrl={member.githubUrl}
+              githubUsername={member.githubUsername}
+              instagramUrl={member.instagramUrl}
+              instagramUsername={member.instagramUsername}
+              profileImage={member.profileImage}
+            />
+          ))}
         </div>
+      </section>
+      <section
+        className="bg-white rounded-lg p-6 sm:p-10 text-center max-w-4xl w-full mt-4"
+        style={{
+          boxShadow:
+            "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        }}
+      >
+        {/* Title */}
+        <p className="text-[#000] text-left text-[24px] font-bold">
+          Credit & License
+        </p>
+        <p className="text-base sm:text-lg text-gray-700 mb-6 pt-1 pl-1">
+          เราเป็นเว็บไซต์ที่ไม่แสวงหาผลกำไร สร้างขึ้นเพื่อประโยชน์ของนักศึกษา
+          เรามุ่งเน้นในการให้ข้อมูลและทรัพยากรที่เป็นประโยชน์
+          เพื่อสนับสนุนการเรียนรู้และการตัดสินใจอย่างมีประสิทธิภาพ
+          โดยไม่มีการเรียกเก็บค่าใช้จ่ายใด ๆ
+        </p>
+        <p className=" text-center text-[1.5rem] font-bold">ใส่อะไรดี
+          dddddddddddddddddddddddงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงง</p>
 
-
-        </section>
-      </div>
-  )
-
+        {/* Group of IMG */}
+        <div className="flex flex-col items-center">
+        <Image
+            src="/aboutUs-page/Google-Fonts-New-Logo.png"
+            alt="Illustration"
+            width={300}
+            height={300}
+          />
+           <Image
+            src="/aboutUs-page/Story-Set-Logo.png"
+            alt="Illustration"
+            width={300}
+            height={300}
+          />
+           <Image
+            src="/aboutUs-page/unDraw-Logo.svg"
+            alt="Illustration"
+            width={200}
+            height={200}
+          />
+        </div>
+      </section>
+    </div>
+  );
 };
 export default pageAbout_us;
