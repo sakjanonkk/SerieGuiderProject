@@ -1,3 +1,4 @@
+"use client";
 import React, { FC, useState } from "react";
 import { Button } from "./ui/button";
 import { ReactNode } from "react";
@@ -14,7 +15,7 @@ const GoogleSignInButton: FC<GoogleSignInButtonProps> = ({ children }) => {
   const loginWithGoogle = async () => {
     try {
       setIsLoading(true);
-      await signIn("google", { callbackUrl: "http://localhost:3000/admin" });
+      await signIn("google", { callbackUrl: "http://localhost:3000/" });
     } catch (error) {
       setIsLoading(false);
     } finally {
@@ -23,8 +24,12 @@ const GoogleSignInButton: FC<GoogleSignInButtonProps> = ({ children }) => {
   };
 
   return (
-    <Button disabled={isLoading} onClick={loginWithGoogle} className="w-full ">
-      {isLoading && (
+    <button
+      disabled={isLoading}
+      onClick={loginWithGoogle}
+      className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-600 border border-gray-300 rounded-full shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300"
+    >
+      {isLoading ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -37,10 +42,11 @@ const GoogleSignInButton: FC<GoogleSignInButtonProps> = ({ children }) => {
         >
           <path d="M21 12a9 9 0 1 1-6.219-8.56" />
         </svg>
+      ) : (
+        <FaGoogle className="h-4 w-4 mr-2 text-gray-600" />
       )}
-      {/* <FaGoogle className=" mr-2" /> */}
-      {children}
-    </Button>
+      <span>{children}</span>
+    </button>
   );
 };
 
