@@ -9,6 +9,7 @@ const TestCompo = () => {
       <h1>Hi</h1>
       {/* เรียกใช้ UserDropdown component */}
       <UserDropdown />
+      {/* console.log(`${session?.user?.id}`) */}
     </div>
   );
 };
