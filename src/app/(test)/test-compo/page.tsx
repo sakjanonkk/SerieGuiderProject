@@ -461,35 +461,37 @@
 // </div>
 //   );
 // }
-
+"use client";
 import React from "react";
 import CourseCarousel from "@/components/CourseCarousel/CourseCarousel";
-import { ChevronRight } from "lucide-react";
+import {
+  ChevronRight,
+  GraduationCap,
+  Code,
+  FlaskConical,
+  Users,
+} from "lucide-react";
+import FacultyCard from "@/components/CourseCard/FacultyCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+import CourseCard from "@/components/CourseCard/CourseCard";
 
 export default function HomePage() {
-  const coursesED = [
-    {
-      image: "/animate/warning-animate.svg",
-      courseName: "Layout for Design",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ultrices orci. Vivamus ante arcu, hendrerit.",
-      courseID: "ED813001",
-      category: "Coding",
-      date: "Jul 16, 2024",
-      faculty: "คณะศึกษาศาสตร์",
-    },
-    {
-      image: "/animate/warning-animate.svg",
-      courseName: "Creative Photography",
-      description:
-        "Mauris tincidunt porttitor risus, et posuere erat malesuada eu. Praesent volutpat ut ipsum ac congue.",
-      courseID: "ED813002",
-      category: "Design",
-      date: "May 10, 2024",
-      faculty: "คณะศิลปกรรมศาสตร์",
-    },
-  ];
-
+  interface Faculty {
+    name: string;
+    nameEn: string;
+    id: string;
+    icon: React.ComponentType<{ className?: string }>;
+    accent: string;
+    borderAccent: string;
+    description: string;
+  }
   const coursesEN = [
     {
       image: "/animate/warning-animate.svg",
@@ -501,48 +503,103 @@ export default function HomePage() {
       date: "Jul 16, 2024",
       faculty: "คณะศึกษาศาสตร์",
     },
+  ];
+  const FACULTY_DATA: Faculty[] = [
+    {
+      name: "คณะศึกษาศาสตร์",
+      nameEn: "Faculty of Education",
+      id: "ED",
+      icon: GraduationCap,
+      accent: "from-blue-50 to-indigo-50",
+      borderAccent: "group-hover:border-blue-200",
+      description: "นวัตกรรมการศึกษาและการพัฒนาการเรียนรู้",
+    },
+    {
+      name: "คณะวิศวกรรมศาสตร์",
+      nameEn: "Faculty of Engineering",
+      id: "EN",
+      icon: Code,
+      accent: "from-emerald-50 to-green-50",
+      borderAccent: "group-hover:border-emerald-200",
+      description: "วิศวกรรมดิจิทัลและนวัตกรรม",
+    },
+    {
+      name: "คณะวิทยาศาสตร์",
+      nameEn: "Faculty of Science",
+      id: "SC",
+      icon: FlaskConical,
+      accent: "from-purple-50 to-pink-50",
+      borderAccent: "group-hover:border-purple-200",
+      description: "วิทยาศาสตร์และเทคโนโลยีสมัยใหม่",
+    },
+    {
+      name: "คณะมนุษยศาสตร์",
+      nameEn: "Faculty of Humanities",
+      id: "HU",
+      icon: Users,
+      accent: "from-orange-50 to-red-50",
+      borderAccent: "group-hover:border-orange-200",
+      description: "ภาษาและวัฒนธรรมร่วมสมัย",
+    },
+  ];
+  const coursesED = [
     {
       image: "/animate/warning-animate.svg",
-      courseName: "Creative Photography",
+      courseName: "Layout for Design1",
       description:
-        "Mauris tincidunt porttitor risus, et posuere erat malesuada eu. Praesent volutpat ut ipsum ac congue.",
-      courseID: "EN813002",
-      category: "Design",
-      date: "May 10, 2024",
-      faculty: "คณะศิลปกรรมศาสตร์",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ultrices orci. Vivamus ante arcu, hendrerit.",
+      courseID: "ED813001",
+      category: "Coding",
+      date: "Jul 16, 2024",
+      faculty: "คณะศึกษาศาสตร์",
+      facultyAKA: "DE",
     },
     {
       image: "/animate/warning-animate.svg",
-      courseName: "Creative Photography",
+      courseName: "Layout for Design1",
       description:
-        "Mauris tincidunt porttitor risus, et posuere erat malesuada eu. Praesent volutpat ut ipsum ac congue.",
-      courseID: "EN813002",
-      category: "Design",
-      date: "May 10, 2024",
-      faculty: "คณะศิลปกรรมศาสตร์",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ultrices orci. Vivamus ante arcu, hendrerit.",
+      courseID: "ED813001",
+      category: "Coding",
+      date: "Jul 16, 2024",
+      faculty: "คณะศึกษาศาสตร์",
     },
     {
       image: "/animate/warning-animate.svg",
-      courseName: "Creative Photography",
+      courseName: "Layout for Design1",
       description:
-        "Mauris tincidunt porttitor risus, et posuere erat malesuada eu. Praesent volutpat ut ipsum ac congue.",
-      courseID: "EN813002",
-      category: "Design",
-      date: "May 10, 2024",
-      faculty: "คณะศิลปกรรมศาสตร์",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ultrices orci. Vivamus ante arcu, hendrerit.",
+      courseID: "ED813001",
+      category: "Coding",
+      date: "Jul 16, 2024",
+      faculty: "คณะศึกษาศาสตร์",
+    },
+    {
+      image: "/animate/warning-animate.svg",
+      courseName: "Layout for Design1",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ultrices orci. Vivamus ante arcu, hendrerit.",
+      courseID: "ED813001",
+      category: "Coding",
+      date: "Jul 16, 2024",
+      faculty: "คณะศึกษาศาสตร์",
     },
   ];
 
   return (
-    <div className="py-8">
-      <div className="pb-10">
-        
-        <CourseCarousel courses={coursesED} />
-      </div>
-
-      <div className="pb-10">
-        
-        <CourseCarousel courses={coursesEN} />
+    <div className="pb-10  w-8/12">
+      <div className=" mx-auto">
+        <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {FACULTY_DATA.map((faculty) => (
+            <FacultyCard key={faculty.id} faculty={faculty} />
+          ))}
+        </div>
+        <div className="pb-10 w-full">
+          <CourseCarousel  courses={coursesED} />
+        </div>
+        <div className="pb-10 w-full">
+          <CourseCarousel courses={coursesED} />
+        </div>
       </div>
     </div>
   );
