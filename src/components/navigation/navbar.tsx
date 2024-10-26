@@ -121,8 +121,9 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          <ExternalNavLink href="/docs1">Documentation1</ExternalNavLink>
-          <ExternalNavLink href="/docs2">Documentation2</ExternalNavLink>
+          <ExternalNavLink href="/test-compo">Testcomponent</ExternalNavLink>
+          <ExternalNavLink href="/All_Courses">Popular Courses</ExternalNavLink>
+          <ExternalNavLink href="/faculties">Course of Faculties</ExternalNavLink>
           <ExternalNavLink href="/about-us">About Us</ExternalNavLink>
         </nav>  
 
