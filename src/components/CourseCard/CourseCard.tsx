@@ -124,16 +124,30 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { CourseInfo } from "@/types/courseType";
 
-interface CourseInfo {
-  image: string;
-  faculty: string;
-  courseName: string;
-  courseID: string;
-  description: string;
-  category: string;
-  date: string;
-}
+
+const colorFaculties = {
+  "SC": "#FAD00A", // คณะวิทยาศาสตร์
+  "AG": "#69BD2B", // คณะเกษตรศาสตร์
+  "EN": "#9A1518", // คณะวิศวกรรมศาสตร์
+  "ED": "#F47322", // คณะศึกษาศาสตร์
+  "EU": "#278ACA", // คณะพยาบาลศาสตร์
+  "MD": "#29AB28", // คณะแพทยศาสตร์
+  "HS": "#FFFFFF", // คณะมนุษยศาสตร์และสังคมศาสตร์
+  "AM": "#3350AC", // คณะเทคนิคการแพทย์
+  "PH": "#FD5697", // คณะสาธารณสุขศาสตร์
+  "DT": "#9C21B0", // คณะทันตแพทยศาสตร์
+  "TE": "#D80001", // คณะเทคโนโลยี
+  "VM": "#6197D5", // คณะสัตวแพทยศาสตร์
+  "AR": "#583623", // คณะสถาปัตยกรรมศาสตร์
+  "BS": "#9A1518", // คณะบริหารธุรกิจและการบัญชี
+  "FA": "#D80001", // คณะศิลปกรรมศาสตร์
+  "LW": "#E5C17B", // คณะนิติศาสตร์
+  "CL": "#DB350F", // วิทยาลัยการปกครองท้องถิ่น
+  "IC": "#124680", // วิทยาลัยนานาชาติ
+  "EC": "#D1AB68", // คณะเศรษฐศาสตร์
+};
 
 const CourseCard = ({
   image,
@@ -144,6 +158,7 @@ const CourseCard = ({
   category,
   date,
 }: CourseInfo) => {
+  
   const [likes, setLikes] = useState<number>(0);
   const [isLiked, setIsLiked] = useState<boolean>(false);
 
@@ -164,7 +179,7 @@ const CourseCard = ({
       console.error("Failed to update likes:", error);
     }
   };
-
+  const test = 'bg-[#124680]';
   return (
     <Card className="group max-w-xs sm:max-w-sm lg:max-w-md mx-auto overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
       <CardContent className="p-0">
@@ -187,7 +202,7 @@ const CourseCard = ({
           </CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <Badge variant="secondary" className="rounded-full mr-2 bg-blue-100">
+              <Badge variant="secondary" className={`rounded-full mr-2 ${test}`}>
                 {courseID}
               </Badge>
               <Badge variant="secondary" className="rounded-full">

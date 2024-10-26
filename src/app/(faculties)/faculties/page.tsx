@@ -25,7 +25,7 @@ const FACULTIES = [
 
 export default function FacultiesPage() {
   return (
-    <div className="py-8 max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-8 max-w-[86rem] mx-auto px-4 sm:px-6 lg:px-8">
       <div className="mb-8">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800">
           คณะทั้งหมด
