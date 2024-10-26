@@ -53,7 +53,9 @@ CREATE TABLE "Post" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "content" TEXT NOT NULL,
+    "picture" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "courseId" TEXT,
 
     CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );
@@ -63,8 +65,42 @@ CREATE TABLE "Like" (
     "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "postId" INTEGER NOT NULL,
+    "userId" TEXT NOT NULL,
 
     CONSTRAINT "Like_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "coursesData" (
+    "courseId" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
+    "courseName" TEXT NOT NULL,
+    "categoryId" TEXT NOT NULL,
+    "courseYear" INTEGER NOT NULL,
+    "courseDescription" TEXT NOT NULL,
+    "facultyId" TEXT NOT NULL,
+
+    CONSTRAINT "coursesData_pkey" PRIMARY KEY ("courseId")
+);
+
+-- CreateTable
+CREATE TABLE "categoryData" (
+    "categoryId" TEXT NOT NULL,
+    "categoryName" TEXT NOT NULL,
+
+    CONSTRAINT "categoryData_pkey" PRIMARY KEY ("categoryId")
+);
+
+-- CreateTable
+CREATE TABLE "facultyData" (
+    "facultyId" TEXT NOT NULL,
+    "facultyTHName" TEXT NOT NULL,
+    "facultyENName" TEXT NOT NULL,
+    "facultyDescription" TEXT NOT NULL,
+    "accentColor" TEXT NOT NULL,
+    "borderAccentColor" TEXT NOT NULL,
+
+    CONSTRAINT "facultyData_pkey" PRIMARY KEY ("facultyId")
 );
 
 -- CreateIndex
@@ -82,6 +118,18 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 -- CreateIndex
 CREATE UNIQUE INDEX "verificationtokens_identifier_token_key" ON "verificationtokens"("identifier", "token");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Like_postId_userId_key" ON "Like"("postId", "userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "coursesData_courseId_key" ON "coursesData"("courseId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "categoryData_categoryId_key" ON "categoryData"("categoryId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "facultyData_facultyId_key" ON "facultyData"("facultyId");
+
 -- AddForeignKey
 ALTER TABLE "accounts" ADD CONSTRAINT "accounts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -89,4 +137,16 @@ ALTER TABLE "accounts" ADD CONSTRAINT "accounts_user_id_fkey" FOREIGN KEY ("user
 ALTER TABLE "sessions" ADD CONSTRAINT "sessions_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "Post" ADD CONSTRAINT "Post_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "coursesData"("courseId") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Like" ADD CONSTRAINT "Like_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Like" ADD CONSTRAINT "Like_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "coursesData" ADD CONSTRAINT "coursesData_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "categoryData"("categoryId") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "coursesData" ADD CONSTRAINT "coursesData_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "facultyData"("facultyId") ON DELETE RESTRICT ON UPDATE CASCADE;
