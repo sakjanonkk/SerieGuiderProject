@@ -51,7 +51,7 @@ export default async function Home() {
       {!session && (
         <section className="py-6 sm:py-8 w-full flex justify-center">
           <div className="text-center space-y-4 max-w-md w-full">
-            <GoogleSignInButton> Sign in with Google </GoogleSignInButton>
+            <GoogleSignInButton> SIGN IN WITH GOOGLE </GoogleSignInButton>
           </div>
         </section>
       )}
