@@ -35,7 +35,7 @@ const CourseCarousel = ({ courses }: CourseCarouselProps) => {
               className="pl-2 md:basis-1/2 lg:basis-1/3"
             >
               <div className="p-1 ">
-                <CourseCard {...course} />
+                <CourseCard initialLikes={0} facultyName={""} {...course} />
               </div>
             </CarouselItem>
           ))}
