@@ -24,7 +24,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        console.log("User from Google Login:", user); // To verify Google user data
+        // console.log("User from Google Login:", user); // To verify Google user data
         token.id = user.id;
         token.username = user.username;
       }
@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.user.id = token.id as string;
       session.user.username = token.username as string;
-      console.log("Session Object After Callback:", session); // To verify session data
+      // console.log("Session Object After Callback:", session); // To verify session data
       return session;
     },
   },

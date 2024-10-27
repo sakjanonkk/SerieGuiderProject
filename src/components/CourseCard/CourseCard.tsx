@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Heart } from "lucide-react";
@@ -33,16 +31,16 @@ const CourseCard: React.FC<CourseCardProps> = ({
   date,
   initialLikes,
 }) => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [isLiked, setIsLiked] = useState(false);
-  const [likes, setLikes] = useState<number>(initialLikes);
+  const [likes, setLikes] = useState<number>(initialLikes || 0); // Initialize with 0 if undefined
 
   useEffect(() => {
-    // Fetch initial like status
-    const fetchLikeStatus = async () => {
-      if (session) {
+    // Fetch initial like status if the user is authenticated
+    if (status === "authenticated" && session?.user?.id) {
+      const fetchLikeStatus = async () => {
         try {
-          const response = await fetch(`/api/like/${courseID}/status`, {
+          const response = await fetch(`/api/like/${courseID}`, {
             method: "GET",
           });
           if (response.ok) {
@@ -52,14 +50,13 @@ const CourseCard: React.FC<CourseCardProps> = ({
         } catch (error) {
           console.error("Error fetching like status:", error);
         }
-      }
-    };
-
-    fetchLikeStatus();
-  }, [courseID, session]);
+      };
+      fetchLikeStatus();
+    }
+  }, [courseID, session, status]);
 
   const handleLikeClick = async () => {
-    if (!session) {
+    if (status !== "authenticated") {
       alert("Please log in to like a course.");
       return;
     }
@@ -73,6 +70,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
         const data = await response.json();
         setIsLiked(data.liked);
         setLikes((prevLikes) => (data.liked ? prevLikes + 1 : prevLikes - 1));
+      } else {
+        console.error("Failed to toggle like status:", response.statusText);
       }
     } catch (error) {
       console.error("Error toggling like:", error);
