@@ -95,12 +95,12 @@ model categoryData {
 }
 
 model facultyData {
-  facultyId          String @id @unique
+  facultyId          String        @id @unique
   facultyTHName      String
   facultyENName      String
   facultyDescription String
   accentColor        String
   borderAccentColor  String
-
-  courses coursesData[]
+  // iconName           String?
+  courses            coursesData[]
 }
