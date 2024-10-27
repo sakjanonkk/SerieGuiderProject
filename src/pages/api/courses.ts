@@ -8,14 +8,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const courses = await prisma.coursesData.findMany({
         include: {
-          likes: true, // Include likes relationship
+          likes: true,
+          faculty: true, // Assuming there's a relation named `faculty` in your model
         },
       });
 
-      // Map through courses to include initialLikes
       const courseData = courses.map((course) => ({
         ...course,
         initialLikes: course.likes.length,
+        facultyName: course.faculty?.facultyTHName || "Unknown Faculty", // Ensure facultyName is populated
       }));
 
       res.status(200).json(courseData);

@@ -30,11 +30,13 @@ export default function HomePage() {
         setLoading(true);
         setError(null);
 
+        // Fetch courses from the backend API
         const response = await fetch("/api/courses");
         if (!response.ok) {
           throw new Error("Failed to fetch courses");
         }
         const data = await response.json();
+        console.log("Fetched Courses Data:", data); // Log the fetched data to verify
 
         // Group courses by facultyName
         const groupedByFaculty = data.reduce(
@@ -43,6 +45,13 @@ export default function HomePage() {
             course: CourseCardProps
           ) => {
             const facultyName = course.facultyName;
+
+            // Debugging output to verify the faculty name
+            console.log("Faculty Name for Course:", facultyName);
+
+            if (!facultyName) {
+              console.error("Faculty Name is undefined for course:", course);
+            }
 
             if (!acc[facultyName]) {
               acc[facultyName] = [];
@@ -53,8 +62,8 @@ export default function HomePage() {
           {}
         );
 
-        console.log("groupedByFaculty", groupedByFaculty);
-        setFacultyCourses(groupedByFaculty);
+        console.log("Grouped By Faculty:", groupedByFaculty); // Log grouped courses to verify
+        setFacultyCourses(groupedByFaculty); // Update state with grouped courses
       } catch (error) {
         console.error("Error fetching courses:", error);
         setError("Could not load courses. Please try again later.");
