@@ -1,15 +1,10 @@
 import { CourseInfo } from '@/types/courseType';
-import { prisma } from '@/lib/prisma'; // หรือ database client ที่คุณใช้
-import { coursesData } from '@/constants/mockData';
+import { db } from '@/lib/db';
 
-export async function getCoursesByFacultyId(facultyId: string) {
+
+export async function getCoursesByFacultyId(facultyId: string): Promise<CourseInfo[]> {
   try {
-    // TODO: เปลี่ยนเป็น database query จริงเมื่อพร้อม
-    return coursesData[facultyId] || [];
-    
-    // ตัวอย่าง query จริง (comment ไว้):
-    /*
-    const courses = await prisma.course.findMany(
+    const courses = await db.coursesData.findMany({
       where: {
         facultyId: facultyId,
       },
@@ -17,8 +12,15 @@ export async function getCoursesByFacultyId(facultyId: string) {
         courseName: 'asc',
       },
     });
-    return courses;
-    */
+    return courses.map(course => ({
+      courseID: course.courseId,
+      image: course.image,
+      courseName: course.courseName,
+      category: course.categoryId,
+      date: course.courseYear.toString(),
+      description: course.courseDescription,
+      faculty: course.facultyId,
+    }));
   } catch (error) {
     console.error('Error fetching courses:', error);
     throw new Error('Failed to fetch courses');
