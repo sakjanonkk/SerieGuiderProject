@@ -49,22 +49,10 @@ CREATE TABLE "verificationtokens" (
 );
 
 -- CreateTable
-CREATE TABLE "Post" (
-    "id" SERIAL NOT NULL,
-    "title" TEXT NOT NULL,
-    "content" TEXT NOT NULL,
-    "picture" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "courseId" TEXT,
-
-    CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "Like" (
     "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "postId" INTEGER NOT NULL,
+    "courseId" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "Like_pkey" PRIMARY KEY ("id")
@@ -119,7 +107,7 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 CREATE UNIQUE INDEX "verificationtokens_identifier_token_key" ON "verificationtokens"("identifier", "token");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Like_postId_userId_key" ON "Like"("postId", "userId");
+CREATE UNIQUE INDEX "Like_courseId_userId_key" ON "Like"("courseId", "userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "coursesData_courseId_key" ON "coursesData"("courseId");
@@ -137,16 +125,13 @@ ALTER TABLE "accounts" ADD CONSTRAINT "accounts_user_id_fkey" FOREIGN KEY ("user
 ALTER TABLE "sessions" ADD CONSTRAINT "sessions_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Post" ADD CONSTRAINT "Post_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "coursesData"("courseId") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Like" ADD CONSTRAINT "Like_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "coursesData"("courseId") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Like" ADD CONSTRAINT "Like_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Like" ADD CONSTRAINT "Like_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Like" ADD CONSTRAINT "Like_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "coursesData" ADD CONSTRAINT "coursesData_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "categoryData"("categoryId") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "coursesData" ADD CONSTRAINT "coursesData_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "categoryData"("categoryId") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "coursesData" ADD CONSTRAINT "coursesData_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "facultyData"("facultyId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "coursesData" ADD CONSTRAINT "coursesData_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "facultyData"("facultyId") ON DELETE CASCADE ON UPDATE CASCADE;

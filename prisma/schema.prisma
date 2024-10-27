@@ -7,15 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model User {
-//   id        Int      @id @default(autoincrement())
-//   email     String   @unique
-//   username  String   @unique
-//   password  String
-//   createdAt DateTime @default(now())
-//   updateUt  DateTime @updatedAt
-// }
-
 model Account {
   id                String  @id @default(cuid())
   userId            String  @map("user_id")
@@ -72,57 +63,35 @@ model VerificationToken {
   @@map("verificationtokens")
 }
 
-model Post {
-  id        Int          @id @default(autoincrement())
-  title     String
-  content   String
-  picture   String
-  createdAt DateTime     @default(now())
-  courseId  String? // Foreign key to reference the course (optional, can be null)
-  course    coursesData? @relation(fields: [courseId], references: [courseId])
-  likes     Like[] // Relationship to track likes on this post
-}
-
 model Like {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  postId    Int // Foreign key referencing the post being liked
-  userId    String // Foreign key referencing the user liking the post
+  courseId  String
+  userId    String
 
-  post Post @relation(fields: [postId], references: [id])
-  user User @relation(fields: [userId], references: [id])
+  course coursesData @relation(fields: [courseId], references: [courseId], onDelete: Cascade)
+  user   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([postId, userId]) // Ensure a user can like a post only once
+  @@unique([courseId, userId])
 }
 
-// model coursesData {
-//   course_id          String      @id @unique
-//   image              String
-//   course_name        String
-//   category           String
-//   course_year        Int
-//   course_description String
-//   faculty_name       String
-//   facultyId          String
-//   faculty            facultyData @relation(fields: [facultyId], references: [faculty_id]) // Foreign key reference
-// }
 model coursesData {
   courseId          String       @id @unique
   image             String
   courseName        String
-  categoryId        String // Foreign key to reference category
-  category          categoryData @relation(fields: [categoryId], references: [categoryId]) // Define the relationship with categoryData
+  categoryId        String
+  category          categoryData @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
   courseYear        Int
   courseDescription String
-  facultyId         String // Foreign key to reference faculty
-  faculty           facultyData  @relation(fields: [facultyId], references: [facultyId])
-  Post              Post[]
+  facultyId         String
+  faculty           facultyData  @relation(fields: [facultyId], references: [facultyId], onDelete: Cascade)
+  likes             Like[]
 }
 
 model categoryData {
   categoryId   String        @id @unique
   categoryName String
-  courses      coursesData[] // Reverse relation to access all related courses
+  courses      coursesData[]
 }
 
 model facultyData {
@@ -133,6 +102,5 @@ model facultyData {
   accentColor        String
   borderAccentColor  String
 
-  // Define reverse relation to reference all related courses
   courses coursesData[]
 }
