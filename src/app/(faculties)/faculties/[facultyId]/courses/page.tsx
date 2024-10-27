@@ -609,20 +609,43 @@
 // }
 
 
+// import { getCoursesByFacultyId } from "@/lib/db/courses";
+// import { CoursesContent } from "@/app/(faculties)/faculties/[facultyId]/courses/CoursesContent";
+
+
+// export default async function FacultyCoursesPage({
+//   params,
+// }: {
+//   params: { facultyId: string };
+// }) {
+  
+//   const courses = await getCoursesByFacultyId(params.facultyId);
+
+//   return (
+//     <CoursesContent facultyId={params.facultyId} initialCourses={courses} />
+//   );
+// }
+
 import { getCoursesByFacultyId } from "@/lib/db/courses";
 import { CoursesContent } from "@/app/(faculties)/faculties/[facultyId]/courses/CoursesContent";
-
+import { notFound } from 'next/navigation';
+import { FACULTY_MAP } from '@/constants/faculty';
 
 export default async function FacultyCoursesPage({
   params,
 }: {
   params: { facultyId: string };
 }) {
-  // ดึงข้อมูลที่ server
+  const faculty = FACULTY_MAP[params.facultyId as keyof typeof FACULTY_MAP];
+
+  if (!faculty) {
+    // หากไม่พบคณะ ให้แสดงหน้า 404
+    notFound();
+  }
+
   const courses = await getCoursesByFacultyId(params.facultyId);
 
   return (
     <CoursesContent facultyId={params.facultyId} initialCourses={courses} />
   );
 }
-
