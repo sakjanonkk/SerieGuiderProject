@@ -121,10 +121,8 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          <ExternalNavLink href="/test-compo">Testcomponent</ExternalNavLink>
           <ExternalNavLink href="/All_Courses">Popular Courses</ExternalNavLink>
           <ExternalNavLink href="/faculties">Course of Faculties</ExternalNavLink>
-          <ExternalNavLink href="/about-us">About Us</ExternalNavLink>
         </nav>  
 
         {/* User Authentication Section */}
@@ -156,9 +154,8 @@ const Navbar: React.FC = () => {
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <nav className="md:hidden flex flex-col items-center mt-4 space-y-2 pb-4">
-          <ExternalNavLink href="/docs1" onClick={toggleMobileMenu}>Docs1</ExternalNavLink>
-          <ExternalNavLink href="/docs2" onClick={toggleMobileMenu}>Docs2</ExternalNavLink>
-          <ExternalNavLink href="/about-us" onClick={toggleMobileMenu}>About Us</ExternalNavLink>
+          <ExternalNavLink href="/All_Courses" onClick={toggleMobileMenu}>Popular Courses</ExternalNavLink>
+          <ExternalNavLink href="/faculties" onClick={toggleMobileMenu}>Course of Faculties</ExternalNavLink>
         </nav>
       )}
     </header>

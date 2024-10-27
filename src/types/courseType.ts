@@ -6,6 +6,9 @@ export interface CourseInfo {
   description: string;
   category: string;
   date: string;
+  id?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 // ถ้าต้องการเพิ่ม types อื่นๆ ที่เกี่ยวกับ course สามารถเพิ่มได้ที่นี่

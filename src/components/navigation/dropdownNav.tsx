@@ -61,7 +61,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { User, Settings, HelpCircle, LogOut } from "lucide-react";
+import { User, Settings, HelpCircle, LogOut,FolderHeart } from "lucide-react";
 import { Session } from "next-auth";
 
 const UserDropdown: React.FC = () => {
@@ -116,13 +116,23 @@ const UserDropdown: React.FC = () => {
         </DropdownMenuItem>
 
         <DropdownMenuItem className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-gray-100">
-          <Settings className="w-4 h-4" />
-          Settings
+        <Link 
+              href={`/CoursesFavorite`}
+              className="flex items-center gap-2 w-full  rounded-md hover:bg-gray-100 cursor-pointer"
+            >
+              <FolderHeart className="w-4 h-4" />
+              Course Favorite
+            </Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-gray-100">
-          <HelpCircle className="w-4 h-4" />
-          Support
+        <Link 
+              href={`/about-us`}
+              className="flex items-center gap-2 w-full  rounded-md hover:bg-gray-100 cursor-pointer"
+            >
+              <HelpCircle className="w-4 h-4" />
+              About Us
+            </Link>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
