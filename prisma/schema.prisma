@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -64,6 +58,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  likes         Like[]
 
   @@map("users")
 }
@@ -75,4 +70,69 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verificationtokens")
+}
+
+model Post {
+  id        Int          @id @default(autoincrement())
+  title     String
+  content   String
+  picture   String
+  createdAt DateTime     @default(now())
+  courseId  String? // Foreign key to reference the course (optional, can be null)
+  course    coursesData? @relation(fields: [courseId], references: [courseId])
+  likes     Like[] // Relationship to track likes on this post
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  postId    Int // Foreign key referencing the post being liked
+  userId    String // Foreign key referencing the user liking the post
+
+  post Post @relation(fields: [postId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([postId, userId]) // Ensure a user can like a post only once
+}
+
+// model coursesData {
+//   course_id          String      @id @unique
+//   image              String
+//   course_name        String
+//   category           String
+//   course_year        Int
+//   course_description String
+//   faculty_name       String
+//   facultyId          String
+//   faculty            facultyData @relation(fields: [facultyId], references: [faculty_id]) // Foreign key reference
+// }
+model coursesData {
+  courseId          String       @id @unique
+  image             String
+  courseName        String
+  categoryId        String // Foreign key to reference category
+  category          categoryData @relation(fields: [categoryId], references: [categoryId]) // Define the relationship with categoryData
+  courseYear        Int
+  courseDescription String
+  facultyId         String // Foreign key to reference faculty
+  faculty           facultyData  @relation(fields: [facultyId], references: [facultyId])
+  Post              Post[]
+}
+
+model categoryData {
+  categoryId   String        @id @unique
+  categoryName String
+  courses      coursesData[] // Reverse relation to access all related courses
+}
+
+model facultyData {
+  facultyId          String @id @unique
+  facultyTHName      String
+  facultyENName      String
+  facultyDescription String
+  accentColor        String
+  borderAccentColor  String
+
+  // Define reverse relation to reference all related courses
+  courses coursesData[]
 }
