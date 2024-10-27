@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useSession, signOut, signIn } from "next-auth/react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
-import { UserIcon, LogOutIcon, PlusCircle } from "lucide-react";
+import { UserIcon, LogOutIcon, PlusCircle, LoaderCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WarningLogin from "@/components/ui-card/warning_login";
 // Types
@@ -82,6 +82,16 @@ const ConnectedAccountsSection: React.FC<{
 const CalendarComponent: React.FC = () => {
   const { data: session } = useSession();
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex items-center justify-center min-h-screen">
+  //       <LoaderCircle className="w-12 h-12 text-primary animate-spin" />
+  //     </div>
+  //   );
+  // }
 
   if (error) {
     return <div className="text-red-500">{error}</div>;
