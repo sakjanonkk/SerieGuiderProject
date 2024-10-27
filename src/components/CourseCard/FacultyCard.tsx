@@ -58,6 +58,7 @@
 
 // export default FacultyCard;
 
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
@@ -79,8 +80,10 @@ const FacultyCard: React.FC<{ faculty: Faculty }> = ({ faculty }) => {
 
   return (
     <Link
-      href={`/faculty/${faculty.id}`}
-      aria-label={`ดูรายละเอียดของ ${faculty.name}`}
+    key={faculty.id}
+    href={`/faculties/${faculty.id}/courses`}
+    className="group relative bg-white rounded-xl shadow-md hover:shadow-xl 
+             transition-all duration-300 overflow-hidden"
     >
       <motion.div
         whileHover={{ scale: 1.02 }}
@@ -107,7 +110,9 @@ const FacultyCard: React.FC<{ faculty: Faculty }> = ({ faculty }) => {
                 {faculty.description}
               </p>
             </div>
-            <ChevronRight className="hidden md:block absolute right-4 sm:right-5 top-4 sm:top-5 w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform duration-300" />
+            <ChevronRight
+              className="hidden md:block absolute right-4 sm:right-5 top-4 sm:top-5 w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform duration-300"
+            />
           </div>
         </Card>
       </motion.div>
