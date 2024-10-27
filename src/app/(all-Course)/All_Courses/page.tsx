@@ -2,16 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { ChevronRight, Heart } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import CourseCard from "@/components/CourseCard/CourseCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -122,63 +113,23 @@ export default function HomePage() {
               >
                 <Link href={`/faculty/${facultyName}/courses`}>
                   <span>ดูทั้งหมด</span>
-                  <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {courses.map((course) => (
-                <Card
+                <CourseCard
                   key={course.courseId}
-                  className="group relative overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105"
-                >
-                  <CardContent className="p-0">
-                    <div className="relative h-56 sm:h-64 overflow-hidden">
-                      <Image
-                        src={course.image}
-                        alt={course.courseName}
-                        fill
-                        className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
-                    <div className="p-6 space-y-4">
-                      <CardHeader className="p-0 space-y-1">
-                        <CardTitle className="line-clamp-2 text-xl font-bold tracking-tight transition-colors group-hover:text-blue-600">
-                          {course.courseName}
-                        </CardTitle>
-                        <CardDescription className="line-clamp-2 text-sm text-gray-600">
-                          {course.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <Badge
-                            variant="secondary"
-                            className="rounded-full mr-2 text-xs"
-                          >
-                            {course.courseId}
-                          </Badge>
-                          <Badge
-                            variant="secondary"
-                            className="rounded-full text-xs"
-                          >
-                            {course.category}
-                          </Badge>
-                        </div>
-                        <time className="text-sm text-gray-500">
-                          {course.date}
-                        </time>
-                      </div>
-                      <div className="flex items-center justify-between mt-4">
-                        <div className="text-sm text-gray-500 flex items-center">
-                          <Heart className="mr-1 text-gray-400" />
-                          {course.initialLikes} Hearts
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  courseID={course.courseId}
+                  image={course.image}
+                  courseName={course.courseName}
+                  description={course.description}
+                  category={course.category}
+                  date={course.date}
+                  initialLikes={course.initialLikes}
+                  facultyName={course.facultyName}
+                />
               ))}
             </div>
           </section>
