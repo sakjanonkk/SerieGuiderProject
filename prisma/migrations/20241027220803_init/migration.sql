@@ -87,6 +87,7 @@ CREATE TABLE "facultyData" (
     "facultyDescription" TEXT NOT NULL,
     "accentColor" TEXT NOT NULL,
     "borderAccentColor" TEXT NOT NULL,
+    "iconName" TEXT,
 
     CONSTRAINT "facultyData_pkey" PRIMARY KEY ("facultyId")
 );
