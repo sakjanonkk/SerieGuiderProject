@@ -11,14 +11,12 @@ import {
 import CourseCard from "@/components/CourseCard/CourseCard";
 import { CourseInfo } from "@/types/courseType";
 
-
 interface CourseCarouselProps {
   courses: CourseInfo[];
 }
 
 const CourseCarousel = ({ courses }: CourseCarouselProps) => {
-
-  const showNavigation = courses.length > 3 ;
+  const showNavigation = courses.length > 3;
   return (
     <div className="w-full max-w-full mx-auto">
       <Carousel
@@ -44,8 +42,8 @@ const CourseCarousel = ({ courses }: CourseCarouselProps) => {
         </CarouselContent>
         {showNavigation && (
           <>
-             <CarouselPrevious className="hidden md:flex" />
-             <CarouselNext className="hidden md:flex" />
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
           </>
         )}
       </Carousel>
