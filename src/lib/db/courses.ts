@@ -9,7 +9,7 @@ export async function getCoursesByFacultyId(facultyId: string) {
     
     // ตัวอย่าง query จริง (comment ไว้):
     /*
-    const courses = await prisma.course.findMany({
+    const courses = await prisma.course.findMany(
       where: {
         facultyId: facultyId,
       },
