@@ -9,7 +9,7 @@
 // import { Badge } from '@/components/ui/badge';
 // import CourseCard from '@/components/CourseCard/CourseCard';
 // import { Input } from "@/components/ui/input";
-// import { 
+// import {
 //   Select,
 //   SelectContent,
 //   SelectItem,
@@ -70,12 +70,12 @@
 //   }, []);
 
 //   const filteredFavorites = favorites.filter(course => {
-//     const matchesSearch = searchQuery === '' || 
+//     const matchesSearch = searchQuery === '' ||
 //       course.courseName.toLowerCase().includes(searchQuery.toLowerCase()) ||
 //       course.courseID.toLowerCase().includes(searchQuery.toLowerCase());
 //     const matchesFaculty = selectedFaculty === 'all' || course.faculty === selectedFaculty;
 //     const matchesYear = selectedYear === 'all' || course.date === selectedYear;
-    
+
 //     return matchesSearch && matchesFaculty && matchesYear;
 //   });
 
@@ -93,7 +93,7 @@
 //             </div>
 //             <div className="flex justify-between items-center">
 //               <div className="text-gray-500 text-lg">
-//                 {filteredFavorites.length > 0 
+//                 {filteredFavorites.length > 0
 //                   ? `รายวิชาที่ถูกใจทั้งหมด ${filteredFavorites.length} รายวิชา`
 //                   : 'ยังไม่มีรายวิชาที่ถูกใจ'
 //                 }
@@ -115,7 +115,7 @@
 //                     </AlertDialogHeader>
 //                     <AlertDialogFooter>
 //                       <AlertDialogCancel>ยกเลิก</AlertDialogCancel>
-//                       <AlertDialogAction 
+//                       <AlertDialogAction
 //                         onClick={handleClearAll}
 //                         className="bg-red-500 hover:bg-red-600"
 //                       >
@@ -127,7 +127,7 @@
 //               )}
 //             </div>
 //           </CardHeader>
-          
+
 //           <CardContent className="space-y-6">
 //             {/* Search and Filters */}
 //             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
@@ -140,7 +140,7 @@
 //                   onChange={(e) => setSearchQuery(e.target.value)}
 //                 />
 //               </div>
-              
+
 //               <div className="md:col-span-2">
 //                 <Select
 //                   value={selectedFaculty}
@@ -158,7 +158,7 @@
 //                   </SelectContent>
 //                 </Select>
 //               </div>
-              
+
 //               <div className="md:col-span-3">
 //                 <Select
 //                   value={selectedYear}
@@ -176,7 +176,7 @@
 //                   </SelectContent>
 //                 </Select>
 //               </div>
-              
+
 //               <div className="md:col-span-1">
 //                 <Button
 //                   variant="outline"
@@ -253,7 +253,7 @@
 //                     </AlertDialogHeader>
 //                     <AlertDialogFooter>
 //                       <AlertDialogCancel>ยกเลิก</AlertDialogCancel>
-//                       <AlertDialogAction 
+//                       <AlertDialogAction
 //                         onClick={() => handleRemoveFavorite(course.courseID)}
 //                         className="bg-red-500 hover:bg-red-600"
 //                       >
@@ -270,7 +270,7 @@
 //             <CardContent className="flex flex-col items-center justify-center py-16">
 //               <BookOpen className="w-16 h-16 text-gray-400 mb-6" />
 //               <p className="text-gray-500 text-lg text-center mb-4">
-//                 {favorites.length === 0 
+//                 {favorites.length === 0
 //                   ? 'คุณยังไม่มีรายวิชาที่ถูกใจ กดที่ไอคอนหัวใจบนรายวิชาที่สนใจเพื่อเพิ่มในรายการ'
 //                   : 'ไม่พบรายวิชาที่ตรงกับเงื่อนไขการค้นหา'
 //                 }
@@ -292,12 +292,11 @@
 //   );
 // }
 
-
 // ปัจจุบันใช้อันนี้
 "use client";
 
-import React, { useState, useCallback, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useCallback, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   Heart,
   Trash2,
@@ -307,15 +306,15 @@ import {
   CircleX,
   ArrowLeft,
   LoaderCircle,
-} from 'lucide-react';
-import { CourseInfo } from '@/types/courseType';
+} from "lucide-react";
+import { CourseInfo } from "@/types/courseType";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import CourseCard from '@/components/CourseCard/CourseCard';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import CourseCard from "@/components/CourseCard/CourseCard";
 import { Input } from "@/components/ui/input";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -338,17 +337,19 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
+} from "@/components/ui/tooltip";
 
 interface FavoriteCoursesContentProps {
   initialFavorites: CourseInfo[];
 }
 
-export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCoursesContentProps) {
+export default function FavoriteCoursesContent({
+  initialFavorites,
+}: FavoriteCoursesContentProps) {
   const [favorites, setFavorites] = useState(initialFavorites);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFaculty, setSelectedFaculty] = useState<string>('all');
-  const [selectedYear, setSelectedYear] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFaculty, setSelectedFaculty] = useState<string>("all");
+  const [selectedYear, setSelectedYear] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -366,43 +367,53 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
   }, [initialFavorites]);
 
   // Get unique faculties and years from favorites
-  const faculties = ['all', ...new Set(favorites.map(course => course.faculty))];
-  const years = ['all', ...new Set(favorites.map(course => course.date))];
+  const faculties = [
+    "all",
+    ...new Set(favorites.map((course) => course.faculty)),
+  ];
+  const years = ["all", ...new Set(favorites.map((course) => course.date))];
 
   const handleRemoveFavorite = useCallback((courseId: string) => {
-    setFavorites(prev => prev.filter(course => course.courseID !== courseId));
+    setFavorites((prev) =>
+      prev.filter((course) => course.courseID !== courseId)
+    );
   }, []);
 
   const handleClearAll = useCallback(() => {
     setFavorites([]);
   }, []);
 
-  const clearFilter = useCallback((type: 'search' | 'faculty' | 'year' | 'all') => {
-    switch (type) {
-      case 'search':
-        setSearchQuery('');
-        break;
-      case 'faculty':
-        setSelectedFaculty('all');
-        break;
-      case 'year':
-        setSelectedYear('all');
-        break;
-      case 'all':
-        setSearchQuery('');
-        setSelectedFaculty('all');
-        setSelectedYear('all');
-        break;
-    }
-  }, []);
+  const clearFilter = useCallback(
+    (type: "search" | "faculty" | "year" | "all") => {
+      switch (type) {
+        case "search":
+          setSearchQuery("");
+          break;
+        case "faculty":
+          setSelectedFaculty("all");
+          break;
+        case "year":
+          setSelectedYear("all");
+          break;
+        case "all":
+          setSearchQuery("");
+          setSelectedFaculty("all");
+          setSelectedYear("all");
+          break;
+      }
+    },
+    []
+  );
 
-  const filteredFavorites = favorites.filter(course => {
-    const matchesSearch = searchQuery === '' || 
+  const filteredFavorites = favorites.filter((course) => {
+    const matchesSearch =
+      searchQuery === "" ||
       course.courseName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       course.courseID.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesFaculty = selectedFaculty === 'all' || course.faculty === selectedFaculty;
-    const matchesYear = selectedYear === 'all' || course.date === selectedYear;
-    
+    const matchesFaculty =
+      selectedFaculty === "all" || course.faculty === selectedFaculty;
+    const matchesYear = selectedYear === "all" || course.date === selectedYear;
+
     return matchesSearch && matchesFaculty && matchesYear;
   });
 
@@ -446,29 +457,34 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
             {/* เพิ่มคำอธิบาย */}
             <div className="flex justify-between items-center">
               <div className="text-gray-500 text-lg">
-                {filteredFavorites.length > 0 
+                {filteredFavorites.length > 0
                   ? `รายวิชาที่ถูกใจทั้งหมด ${filteredFavorites.length} รายวิชา`
-                  : 'ยังไม่มีรายวิชาที่ถูกใจ'
-                }
+                  : "ยังไม่มีรายวิชาที่ถูกใจ"}
               </div>
               {favorites.length > 0 && (
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button variant="outline" className="text-red-500 hover:text-red-600">
+                    <Button
+                      variant="outline"
+                      className="text-red-500 hover:text-red-600"
+                    >
                       <Trash2 className="w-4 h-4 mr-2" />
                       ล้างรายการทั้งหมด
                     </Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent className="bg-white">
                     <AlertDialogHeader>
-                      <AlertDialogTitle>ยืนยันการลบรายการที่ถูกใจทั้งหมด</AlertDialogTitle>
+                      <AlertDialogTitle>
+                        ยืนยันการลบรายการที่ถูกใจทั้งหมด
+                      </AlertDialogTitle>
                       <AlertDialogDescription>
-                        การกระทำนี้ไม่สามารถย้อนกลับได้ คุณแน่ใจหรือไม่ที่จะลบรายวิชาที่ถูกใจทั้งหมด?
+                        การกระทำนี้ไม่สามารถย้อนกลับได้
+                        คุณแน่ใจหรือไม่ที่จะลบรายวิชาที่ถูกใจทั้งหมด?
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>ยกเลิก</AlertDialogCancel>
-                      <AlertDialogAction 
+                      <AlertDialogAction
                         onClick={handleClearAll}
                         className="bg-red-500 hover:bg-red-600"
                       >
@@ -480,7 +496,7 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
               )}
             </div>
           </CardHeader>
-          
+
           <CardContent className="space-y-6">
             {/* คำอธิบายการค้นหาและกรอง */}
             <div className="text-gray-600 text-sm mb-2">
@@ -497,7 +513,7 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              
+
               <div className="md:col-span-2">
                 <Select
                   value={selectedFaculty}
@@ -509,36 +525,33 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
                   <SelectContent>
                     {faculties.map((faculty) => (
                       <SelectItem key={faculty} value={faculty}>
-                        {faculty === 'all' ? 'ทุกคณะ' : faculty}
+                        {faculty === "all" ? "ทุกคณะ" : faculty}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div className="md:col-span-3">
-                <Select
-                  value={selectedYear}
-                  onValueChange={setSelectedYear}
-                >
+                <Select value={selectedYear} onValueChange={setSelectedYear}>
                   <SelectTrigger className="h-10">
                     <SelectValue placeholder="ปีการศึกษา" />
                   </SelectTrigger>
                   <SelectContent>
                     {years.map((year) => (
                       <SelectItem key={year} value={year}>
-                        {year === 'all' ? 'ทุกปีการศึกษา' : year}
+                        {year === "all" ? "ทุกปีการศึกษา" : year}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div className="md:col-span-1 flex justify-end">
                 <Button
                   variant="outline"
                   className="w-full md:w-auto h-10 hover:bg-gray-100"
-                  onClick={() => clearFilter('all')}
+                  onClick={() => clearFilter("all")}
                 >
                   <SlidersHorizontal className="h-4 w-4" />
                 </Button>
@@ -546,24 +559,26 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
             </div>
 
             {/* Active Filters */}
-            {(selectedFaculty !== 'all' || selectedYear !== 'all' || searchQuery) && (
+            {(selectedFaculty !== "all" ||
+              selectedYear !== "all" ||
+              searchQuery) && (
               <div className="flex flex-wrap gap-2 pt-2">
-                {selectedFaculty !== 'all' && (
+                {selectedFaculty !== "all" && (
                   <Badge variant="secondary" className="px-3 py-1 text-sm">
                     คณะ: {selectedFaculty}
                     <button
-                      onClick={() => clearFilter('faculty')}
+                      onClick={() => clearFilter("faculty")}
                       className="ml-2 hover:text-primary"
                     >
                       <CircleX className="h-3 w-3 inline" />
                     </button>
                   </Badge>
                 )}
-                {selectedYear !== 'all' && (
+                {selectedYear !== "all" && (
                   <Badge variant="secondary" className="px-3 py-1 text-sm">
                     ปีการศึกษา: {selectedYear}
                     <button
-                      onClick={() => clearFilter('year')}
+                      onClick={() => clearFilter("year")}
                       className="ml-2 hover:text-primary"
                     >
                       <CircleX className="h-3 w-3 inline" />
@@ -574,7 +589,7 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
                   <Badge variant="secondary" className="px-3 py-1 text-sm">
                     ค้นหา: {searchQuery}
                     <button
-                      onClick={() => clearFilter('search')}
+                      onClick={() => clearFilter("search")}
                       className="ml-2 hover:text-primary"
                     >
                       <CircleX className="h-3 w-3 inline" />
@@ -588,7 +603,7 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
 
         {/* เพิ่มปุ่มกลับไปหน้าค้นหารายวิชา */}
         <div className="flex justify-end mb-4">
-          <Button variant="link" onClick={() => router.push('/faculties')}>
+          <Button variant="link" onClick={() => router.push("/faculties")}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             กลับไปหน้าค้นหารายวิชา
           </Button>
@@ -599,7 +614,17 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr">
             {filteredFavorites.map((course) => (
               <div key={course.courseID} className="h-full relative group">
-                <CourseCard initialLikes={0} facultyName={''} {...course} />
+                <CourseCard
+                  image={course.image}
+                  courseName={course.courseName}
+                  description={course.description}
+                  courseID={course.courseID}
+                  category={course.category}
+                  date={course.date}
+                  initialLikes={course.likesCount || 0} // Use likesCount from course
+                  facultyName={course.faculty}
+                />
+                {/* Trash button to remove favorite */}
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -615,15 +640,21 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
                         </AlertDialogTrigger>
                         <AlertDialogContent className="bg-white">
                           <AlertDialogHeader>
-                            <AlertDialogTitle>ยืนยันการลบรายวิชา</AlertDialogTitle>
+                            <AlertDialogTitle>
+                              ยืนยันการลบรายวิชา
+                            </AlertDialogTitle>
                             <AlertDialogDescription>
-                              คุณแน่ใจหรือไม่ที่ต้องการลบรายวิชา {course.courseID} - {course.courseName} ออกจากรายการที่ถูกใจ?
+                              คุณแน่ใจหรือไม่ที่ต้องการลบรายวิชา{" "}
+                              {course.courseID} - {course.courseName}{" "}
+                              ออกจากรายการที่ถูกใจ?
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
                             <AlertDialogCancel>ยกเลิก</AlertDialogCancel>
-                            <AlertDialogAction 
-                              onClick={() => handleRemoveFavorite(course.courseID)}
+                            <AlertDialogAction
+                              onClick={() =>
+                                handleRemoveFavorite(course.courseID)
+                              }
                               className="bg-red-500 hover:bg-red-600"
                             >
                               ลบรายวิชา
@@ -632,13 +663,16 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
                         </AlertDialogContent>
                       </AlertDialog>
                     </TooltipTrigger>
-                    <TooltipContent>
-                      ลบรายวิชาออกจากที่ถูกใจ
-                    </TooltipContent>
+                    <TooltipContent>ลบรายวิชาออกจากที่ถูกใจ</TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
               </div>
             ))}
+            {/* <CourseCard
+              initialLikes={course.likesCount || 0} // Use likesCount from course
+              facultyName={course.faculty}
+              {...course}
+            /> */}
           </div>
         ) : (
           <Card className="shadow-md">
@@ -647,11 +681,12 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
               {favorites.length === 0 ? (
                 <>
                   <p className="text-gray-500 text-lg text-center mb-4">
-                    คุณยังไม่มีรายวิชาที่ถูกใจ กดที่ไอคอนหัวใจบนรายวิชาที่สนใจเพื่อเพิ่มในรายการ 
+                    คุณยังไม่มีรายวิชาที่ถูกใจ
+                    กดที่ไอคอนหัวใจบนรายวิชาที่สนใจเพื่อเพิ่มในรายการ
                   </p>
                   <Button
                     variant="default"
-                    onClick={() => router.push('/All_Courses')}
+                    onClick={() => router.push("/All_Courses")}
                     className="mt-4"
                   >
                     ค้นหารายวิชา
@@ -660,11 +695,12 @@ export default function FavoriteCoursesContent({ initialFavorites }: FavoriteCou
               ) : (
                 <>
                   <p className="text-gray-500 text-lg text-center mb-4">
-                    ไม่พบรายวิชาที่ตรงกับเงื่อนไขการค้นหา ลองปรับตัวกรองหรือล้างการค้นหาเพื่อดูวิชาทั้งหมด
+                    ไม่พบรายวิชาที่ตรงกับเงื่อนไขการค้นหา
+                    ลองปรับตัวกรองหรือล้างการค้นหาเพื่อดูวิชาทั้งหมด
                   </p>
                   <Button
                     variant="outline"
-                    onClick={() => clearFilter('all')}
+                    onClick={() => clearFilter("all")}
                     className="hover:bg-gray-100 mt-4"
                   >
                     ล้างตัวกรองทั้งหมด
