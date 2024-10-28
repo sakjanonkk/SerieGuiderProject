@@ -1,3 +1,5 @@
+// src/types/courseType.ts
+
 export interface CourseInfo {
   image: string;
   faculty: string;
@@ -6,6 +8,7 @@ export interface CourseInfo {
   description: string;
   category: string;
   date: string;
+  likesCount?: number; // Add this line
   id?: string;
   createdAt?: Date;
   updatedAt?: Date;

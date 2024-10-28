@@ -1,9 +1,10 @@
 // app/(main)/faculties/page.tsx
-'use client'
-import React from 'react';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import {Cog,
+"use client";
+import React from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import {
+  Cog,
   GraduationCap,
   Code,
   FlaskConical,
@@ -22,11 +23,11 @@ import {Cog,
   Laptop,
   Languages,
   Scale,
-  TestTubeDiagonal ,
-  Binary ,
+  TestTubeDiagonal,
+  Binary,
   Clipboard,
 } from "lucide-react";
-import FacultyCard from '@/components/CourseCard/FacultyCard';
+import FacultyCard from "@/components/CourseCard/FacultyCard";
 
 const FACULTY_DATA = [
   {
@@ -96,7 +97,7 @@ const FACULTY_DATA = [
     borderAccent: "group-hover:border-green-200",
   },
   {
-    id: "HU",
+    id: "HS",
     name: "คณะมนุษยศาสตร์และสังคมศาสตร์",
     nameEn: "humanities",
     description: "ศึกษาและพัฒนาทางด้านมนุษยศาสตร์และสังคม",
@@ -251,12 +252,10 @@ const FACULTY_DATA = [
   },
 ];
 
-
 export default function FacultiesPage() {
-  
   return (
     <div className="py-8 max-w-[86rem] mx-auto px-4 sm:px-6 lg:px-8">
-       {/* Section สำหรับการค้นหาหรือ filter
+      {/* Section สำหรับการค้นหาหรือ filter
        <div className="mb-12 bg-gray-50 rounded-xl p-6">
         <h2 className="text-xl font-semibold mb-4">ค้นหารายวิชาเสรี</h2>
         <div className="flex flex-col sm:flex-row gap-4">
@@ -281,12 +280,12 @@ export default function FacultiesPage() {
       </div>
 
       <section className="py-8">
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    {FACULTY_DATA.map((faculty) => (
-      <FacultyCard key={faculty.id} faculty={faculty} />
-    ))}
-  </div>
-</section>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {FACULTY_DATA.map((faculty) => (
+            <FacultyCard key={faculty.id} faculty={faculty} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

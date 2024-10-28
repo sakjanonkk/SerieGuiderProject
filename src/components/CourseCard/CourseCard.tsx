@@ -128,7 +128,6 @@
 
 // export default CourseCard;
 
-
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Heart } from "lucide-react";
@@ -249,14 +248,15 @@ const CourseCard: React.FC<CourseCardProps> = ({
               )}
             >
               <Heart
-                className={cn("mr-2 h-5 w-5", isLiked ? "fill-red-500" : "fill-none")}
+                className={cn(
+                  "mr-2 h-5 w-5",
+                  isLiked ? "fill-red-500" : "fill-none"
+                )}
                 fill={isLiked ? "red" : "none"}
               />
               {isLiked ? "ถูกใจแล้ว" : "Give Heart"}
             </button>
-            <div className="text-sm text-muted-foreground">
-              Heart: {likes}
-            </div>
+            <div className="text-sm text-muted-foreground">Heart: {likes}</div>
           </div>
         </div>
       </CardContent>
