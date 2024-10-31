@@ -626,16 +626,43 @@
 //   );
 // }
 
-import { getCoursesByFacultyId } from "@/lib/db/courses";
-import { CoursesContent } from "@/app/(faculties)/faculties/[facultyId]/courses/CoursesContent";
-import { notFound } from 'next/navigation';
-import { FACULTY_MAP } from '@/constants/faculty';
+// import { getCoursesByFacultyId } from "@/lib/db/courses";
+// import { CoursesContent } from "@/app/(faculties)/faculties/[facultyId]/courses/CoursesContent";
+// import { notFound } from 'next/navigation';
+// import { FACULTY_MAP } from '@/constants/faculty';
 
-export default async function FacultyCoursesPage({
-  params,
-}: {
+// export default async function FacultyCoursesPage({
+//   params,
+// }: {
+//   params: { facultyId: string };
+// }) {
+//   const faculty = FACULTY_MAP[params.facultyId as keyof typeof FACULTY_MAP];
+
+//   if (!faculty) {
+//     // หากไม่พบคณะ ให้แสดงหน้า 404
+//     notFound();
+//   }
+
+//   const courses = await getCoursesByFacultyId(params.facultyId);
+
+//   return (
+//     <CoursesContent facultyId={params.facultyId} initialCourses={courses} />
+//   );
+// }
+
+
+"use client";
+
+import React from "react";
+import { notFound } from "next/navigation";
+import { FACULTY_MAP } from "@/constants/faculty";
+import { CoursesContent } from "@/app/(faculties)/faculties/[facultyId]/courses/CoursesContent";
+
+interface FacultyCoursesPageProps {
   params: { facultyId: string };
-}) {
+}
+
+export default function FacultyCoursesPage({ params }: FacultyCoursesPageProps) {
   const faculty = FACULTY_MAP[params.facultyId as keyof typeof FACULTY_MAP];
 
   if (!faculty) {
@@ -643,9 +670,5 @@ export default async function FacultyCoursesPage({
     notFound();
   }
 
-  const courses = await getCoursesByFacultyId(params.facultyId);
-
-  return (
-    <CoursesContent facultyId={params.facultyId} initialCourses={courses} />
-  );
+  return <CoursesContent facultyId={params.facultyId} />;
 }

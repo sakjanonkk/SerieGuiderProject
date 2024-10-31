@@ -44,7 +44,7 @@ const FACULTY_DATA = [
   {
     id: "EN",
     name: "คณะวิศวกรรมศาสตร์",
-    nameEn: "engineering",
+    nameEn: "Faculty of Engineering",
     description: "พัฒนาเทคโนโลยีและนวัตกรรมทางวิศวกรรม",
     courseCount: 15,
     image: "/images/faculties/engineering.jpg",
@@ -55,7 +55,7 @@ const FACULTY_DATA = [
   {
     id: "SC",
     name: "คณะวิทยาศาสตร์",
-    nameEn: "sciences",
+    nameEn: "Faculty of Science",
     description: "เรียนรู้และวิจัยด้านวิทยาศาสตร์เพื่อพัฒนาสังคม",
     courseCount: 20,
     image: "/images/faculties/science.jpg",
@@ -66,7 +66,7 @@ const FACULTY_DATA = [
   {
     id: "AG",
     name: "คณะเกษตรศาสตร์",
-    nameEn: "agriculture",
+    nameEn: "Faculty of Agriculture",
     description: "ศึกษาวิธีการเกษตรสมัยใหม่ พัฒนาอุตสาหกรรมเกษตร",
     courseCount: 18,
     image: "/images/faculties/agriculture.jpg",
@@ -77,7 +77,7 @@ const FACULTY_DATA = [
   {
     id: "NU",
     name: "คณะพยาบาลศาสตร์",
-    nameEn: "nursing",
+    nameEn: "Faculty of Nursing",
     description: "พัฒนาบุคลากรการพยาบาลอย่างมีคุณภาพ",
     courseCount: 10,
     image: "/images/faculties/nursing.jpg",
@@ -88,7 +88,7 @@ const FACULTY_DATA = [
   {
     id: "MD",
     name: "คณะแพทยศาสตร์",
-    nameEn: "medicine",
+    nameEn: "Faculty of Medicine",
     description: "มุ่งเน้นการศึกษาด้านการแพทย์และการรักษา",
     courseCount: 25,
     image: "/images/faculties/medicine.jpg",
@@ -99,7 +99,7 @@ const FACULTY_DATA = [
   {
     id: "HS",
     name: "คณะมนุษยศาสตร์และสังคมศาสตร์",
-    nameEn: "humanities",
+    nameEn: "Faculty of Humanities and Social Sciences",
     description: "ศึกษาและพัฒนาทางด้านมนุษยศาสตร์และสังคม",
     courseCount: 30,
     image: "/images/faculties/humanities.jpg",
@@ -110,7 +110,7 @@ const FACULTY_DATA = [
   {
     id: "MT",
     name: "คณะเทคนิคการแพทย์",
-    nameEn: "medical_tech",
+    nameEn: "Faculty of Medical Technology",
     description: "เน้นการศึกษาวิทยาศาสตร์การแพทย์และเทคนิคที่ทันสมัย",
     courseCount: 15,
     image: "/images/faculties/medical_technology.jpg",
@@ -121,7 +121,7 @@ const FACULTY_DATA = [
   {
     id: "GS",
     name: "บัณฑิตวิทยาลัย",
-    nameEn: "graduate_studies",
+    nameEn: "Graduate School",
     description: "ส่งเสริมการศึกษาระดับบัณฑิตศึกษา",
     courseCount: 5,
     image: "/images/faculties/graduate_school.jpg",
@@ -132,7 +132,7 @@ const FACULTY_DATA = [
   {
     id: "PH",
     name: "คณะสาธารณสุขศาสตร์",
-    nameEn: "public_health",
+    nameEn: "Faculty of Public Health",
     description: "พัฒนาบุคลากรด้านสาธารณสุขเพื่อบริการสังคม",
     courseCount: 22,
     image: "/images/faculties/public_health.jpg",
@@ -143,7 +143,7 @@ const FACULTY_DATA = [
   {
     id: "DE",
     name: "คณะทันตแพทยศาสตร์",
-    nameEn: "dentistry",
+    nameEn: "Faculty of Dentistry",
     description: "ศึกษาและฝึกฝนด้านทันตแพทยศาสตร์",
     courseCount: 12,
     image: "/images/faculties/dentistry.jpg",
@@ -154,7 +154,7 @@ const FACULTY_DATA = [
   {
     id: "PHM",
     name: "คณะเภสัชศาสตร์",
-    nameEn: "pharmacy",
+    nameEn: "Faculty of Pharmacy",
     description: "ศึกษาด้านเภสัชศาสตร์เพื่อพัฒนาการรักษา",
     courseCount: 18,
     image: "/images/faculties/pharmacy.jpg",
@@ -165,7 +165,7 @@ const FACULTY_DATA = [
   {
     id: "TC",
     name: "คณะเทคโนโลยี",
-    nameEn: "technology",
+    nameEn: "Faculty of Technology",
     description: "พัฒนาเทคโนโลยีสมัยใหม่สู่การใช้งานในหลากหลายสาขา",
     courseCount: 16,
     image: "/images/faculties/technology.jpg",
@@ -176,7 +176,7 @@ const FACULTY_DATA = [
   {
     id: "VM",
     name: "คณะสัตวแพทยศาสตร์",
-    nameEn: "veterinary_science",
+    nameEn: "Faculty of Veterinary Science",
     description: "ศึกษาวิทยาศาสตร์สัตวแพทย์และสุขภาพสัตว์",
     courseCount: 14,
     image: "/images/faculties/veterinary_medicine.jpg",
@@ -187,7 +187,7 @@ const FACULTY_DATA = [
   {
     id: "AR",
     name: "คณะสถาปัตยกรรมศาสตร์",
-    nameEn: "architecture",
+    nameEn: "Faculty of Architecture",
     description: "สร้างสรรค์ศิลปะและวิชาชีพด้านสถาปัตยกรรม",
     courseCount: 17,
     image: "/images/faculties/architecture.jpg",
@@ -198,7 +198,7 @@ const FACULTY_DATA = [
   {
     id: "BA",
     name: "คณะบริหารธุรกิจและการบัญชี",
-    nameEn: "business_admin",
+    nameEn: "Faculty of Business Administration and Accounting",
     description: "พัฒนาธุรกิจและการจัดการบัญชี",
     courseCount: 20,
     image: "/images/faculties/business.jpg",
@@ -209,7 +209,7 @@ const FACULTY_DATA = [
   {
     id: "FA",
     name: "คณะศิลปกรรมศาสตร์",
-    nameEn: "fine_arts",
+    nameEn: "Faculty of Fine Arts",
     description: "มุ่งเน้นการสร้างสรรค์ด้านศิลปกรรม",
     courseCount: 13,
     image: "/images/faculties/fine_arts.jpg",
@@ -220,7 +220,7 @@ const FACULTY_DATA = [
   {
     id: "LA",
     name: "คณะนิติศาสตร์",
-    nameEn: "law",
+    nameEn: "Faculty of Law",
     description: "ศึกษาและพัฒนากฎหมายเพื่อสังคม",
     courseCount: 19,
     image: "/images/faculties/law.jpg",
@@ -231,7 +231,7 @@ const FACULTY_DATA = [
   {
     id: "EC",
     name: "คณะเศรษฐศาสตร์",
-    nameEn: "economics",
+    nameEn: "Faculty of Economics",
     description: "ศึกษาและวิจัยด้านเศรษฐศาสตร์",
     courseCount: 14,
     image: "/images/faculties/economics.jpg",
@@ -242,7 +242,7 @@ const FACULTY_DATA = [
   {
     id: "ID",
     name: "คณะสหวิทยาการ",
-    nameEn: "interdisciplinary",
+    nameEn: "Faculty of Interdisciplinary Studies",
     description: "ศึกษาและบูรณาการศาสตร์ต่าง ๆ เข้าด้วยกัน",
     courseCount: 11,
     image: "/images/faculties/interdisciplinary.jpg",
@@ -251,6 +251,7 @@ const FACULTY_DATA = [
     borderAccent: "group-hover:border-indigo-200",
   },
 ];
+
 
 export default function FacultiesPage() {
   return (
