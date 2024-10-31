@@ -7,8 +7,8 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-  title: "รายวิชาที่ถูกใจ | MyWeb",
-  description: "รายการวิชาเสรีที่คุณสนใจ",
+  title: "รายวิชาที่ถูกใจ | SERIEsGuide",
+  description: "รายการวิชาเสรีที่คุณถูกใจ",
 };
 
 export default async function FavoritesPage() {
@@ -54,6 +54,7 @@ export default async function FavoritesPage() {
     faculty: fav.course.faculty.facultyTHName,
     facultyAKA: fav.course.faculty.facultyId,
     likesCount: fav.course._count.likes, // Include likes count
+    initialLikes: fav.course._count.likes, // Include initial likes
   }));
 
   return <FavoriteCoursesContent initialFavorites={initialFavorites} />;
