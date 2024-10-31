@@ -6,7 +6,6 @@
 // import { Button } from "@/components/ui/button";
 // import Link from "next/link";
 
-
 // interface CourseCardProps {
 //   courseId: string;
 //   image: string;
@@ -517,7 +516,6 @@
 //   );
 // }
 
-
 // "use client";
 
 // import React, { useEffect, useState, useCallback } from "react";
@@ -808,7 +806,6 @@
 //   );
 // }
 
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -816,17 +813,16 @@ import { motion } from "framer-motion";
 import CourseCarousel from "@/components/CourseCarousel/CourseCarousel";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import CourseCard from "@/components/CourseCard/CourseCard";
-import { 
-  GraduationCap, 
-  Code, 
-  FlaskConical, 
-  BookOpen, 
-  ChevronRight 
+// import CourseCard from "@/components/CourseCard/CourseCard";
+import {
+  GraduationCap,
+  Code,
+  FlaskConical,
+  BookOpen,
+  ChevronRight,
 } from "lucide-react";
 import { CourseType } from "@/types/courseType";
 import FacultyCard from "@/components/CourseCard/FacultyCard";
-
 
 interface FacultyData {
   name: string;
@@ -874,7 +870,7 @@ const FACULTY_DATA: FacultyData[] = [
     icon: BookOpen,
     accent: "from-gray-50 to-gray-100",
     borderAccent: "group-hover:border-gray-200",
-  }
+  },
 ];
 
 export default function HomePage() {
@@ -946,12 +942,12 @@ export default function HomePage() {
 
         {/* Faculty Grid */}
         <section className="py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {FACULTY_DATA.map((faculty) => (
-            <FacultyCard key={faculty.id} faculty={faculty} />
-          ))}
-        </div>
-      </section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {FACULTY_DATA.map((faculty) => (
+              <FacultyCard key={faculty.id} faculty={faculty} />
+            ))}
+          </div>
+        </section>
 
         {/* Course Sections with Carousel */}
         {Object.entries(facultyCourses).map(([facultyName, courses]) => (
@@ -966,7 +962,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <Button
+              {/* <Button
                 variant="ghost"
                 className="mt-4 sm:mt-0 group hover:bg-gray-50"
                 asChild
@@ -975,7 +971,7 @@ export default function HomePage() {
                   <span>ดูทั้งหมด</span>
                   <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </Button>
+              </Button> */}
             </div>
 
             <CourseCarousel courses={courses} />

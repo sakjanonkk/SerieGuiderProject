@@ -15,7 +15,7 @@ const GoogleSignInButton: FC<GoogleSignInButtonProps> = ({ children }) => {
   const loginWithGoogle = async () => {
     try {
       setIsLoading(true);
-      await signIn("google", { callbackUrl: "http://localhost:3000/" });
+      await signIn("google", { callbackUrl: "/" });
     } catch (error) {
       setIsLoading(false);
     } finally {
