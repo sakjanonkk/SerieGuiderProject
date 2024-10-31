@@ -150,8 +150,7 @@ import Icon from "@/components/icon/icon-lucide";
 import ProfileCard from "@/components/ui-card/cardAboutUs-page";
 import Image from "next/image";
 
-
-import {LoaderCircle} from 'lucide-react';
+import { LoaderCircle } from "lucide-react";
 
 const teamMembers = [
   {
@@ -187,7 +186,7 @@ const PageAboutUs = () => {
     // จำลองการโหลดข้อมูล (เช่นจาก API)
     const loadData = async () => {
       // ทำการโหลดข้อมูลที่นี่
-      await new Promise(resolve => setTimeout(resolve, 2000)); // รอ 2 วินาที
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // รอ 2 วินาที
       setIsLoading(false);
     };
 
@@ -224,7 +223,9 @@ const PageAboutUs = () => {
         </div>
 
         {/* Title */}
-        <p className="text-[#000] text-left text-[24px] font-bold">Motivation</p>
+        <p className="text-[#000] text-left text-[24px] font-bold">
+          Motivation
+        </p>
         <p className="text-base sm:text-lg text-gray-700 mb-6 pt-1 pl-1">
           เว็บไซต์แนะนำวิชาเสรีสำหรับนักศึกษามหาวิทยาลัยขอนแก่น
           ถูกสร้างขึ้นเพื่อช่วยให้นักศึกษา
@@ -263,14 +264,16 @@ const PageAboutUs = () => {
             "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         }}
       >
-        <p className="text-[#000] text-left text-[24px] font-bold">Credit & License</p>
+        <p className="text-[#000] text-left text-[24px] font-bold">
+          Credit & License
+        </p>
         <p className="text-base sm:text-lg text-gray-700 mb-6 pt-1 pl-1">
           เราเป็นเว็บไซต์ที่ไม่แสวงหาผลกำไร สร้างขึ้นเพื่อประโยชน์ของนักศึกษา
           เรามุ่งเน้นในการให้ข้อมูลและทรัพยากรที่เป็นประโยชน์
           เพื่อสนับสนุนการเรียนรู้และการตัดสินใจอย่างมีประสิทธิภาพ
           โดยไม่มีการเรียกเก็บค่าใช้จ่ายใด ๆ
         </p>
-        <p className="text-center text-[1.5rem] font-bold">ใส่อะไรดี</p>
+        {/* <p className="text-center text-[1.5rem] font-bold">ใส่อะไรดี</p> */}
 
         {/* Group of IMG */}
         <div className="flex flex-col items-center">
