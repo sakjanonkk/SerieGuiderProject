@@ -728,7 +728,7 @@ import {
   CircleX,
   ArrowLeft,
   LoaderCircle,
-  HeartOff
+  HeartOff,
 } from "lucide-react";
 import { CourseInfo } from "@/types/courseType";
 
@@ -788,15 +788,21 @@ export default function FavoriteCoursesContent({
     "all",
     ...Array.from(new Set(favorites.map((course) => course.faculty))),
   ];
-  const years = ["all", ...Array.from(new Set(favorites.map((course) => course.date)))];
+  const years = [
+    "all",
+    ...Array.from(new Set(favorites.map((course) => course.date))),
+  ];
 
   const handleRemoveFavorite = useCallback(async (courseId: string) => {
     setIsDeleting(true);
     setDeleteError(null);
     try {
-      const response = await fetch(`/api/like/${encodeURIComponent(courseId)}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `/api/like/${encodeURIComponent(courseId)}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       const data = await response.json();
       console.log("Delete single response:", response.status, data);
@@ -954,7 +960,9 @@ export default function FavoriteCoursesContent({
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogCancel disabled={isDeleting}>ยกเลิก</AlertDialogCancel>
+                      <AlertDialogCancel disabled={isDeleting}>
+                        ยกเลิก
+                      </AlertDialogCancel>
                       <AlertDialogAction
                         onClick={handleClearAll}
                         className="bg-red-500 hover:bg-red-600"
@@ -972,9 +980,7 @@ export default function FavoriteCoursesContent({
           <CardContent className="space-y-6">
             {/* แสดงข้อความข้อผิดพลาดในการลบ */}
             {deleteError && (
-              <div className="text-red-500 text-sm mb-4">
-                {deleteError}
-              </div>
+              <div className="text-red-500 text-sm mb-4">{deleteError}</div>
             )}
 
             {/* คำอธิบายการค้นหาและกรอง */}
@@ -1104,7 +1110,6 @@ export default function FavoriteCoursesContent({
                   facultyName={course.faculty}
                 />
                 {/* Trash button to remove favorite */}
-                
               </div>
             ))}
           </div>
