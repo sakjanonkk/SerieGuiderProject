@@ -7,6 +7,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import { UserIcon, LogOutIcon, PlusCircle, LoaderCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WarningLogin from "@/components/ui-card/warning_login";
+import { motion } from "framer-motion";
 // Types
 type ConnectedAccounts = {
   google?: string;
@@ -107,6 +108,11 @@ const CalendarComponent: React.FC = () => {
   return (
     <div className="min-h-screen p-4">
       <div className="max-w-4xl mx-auto">
+      <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="py-2 sm:py-4 lg:py-4">
         <Card className="shadow-lg">
           <CardContent className="p-0">
             <div className="grid grid-cols-1 md:grid-cols-4">
@@ -141,7 +147,7 @@ const CalendarComponent: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-      </div>
+        </motion.section></div>
     </div>
   );
 };

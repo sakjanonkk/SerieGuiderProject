@@ -729,6 +729,8 @@ import {
   ArrowLeft,
   LoaderCircle,
   HeartOff,
+  SearchX,
+  RefreshCw
 } from "lucide-react";
 import { CourseInfo } from "@/types/courseType";
 
@@ -764,6 +766,7 @@ import {
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
 
 interface FavoriteCoursesContentProps {
   initialFavorites: CourseInfo[];
@@ -916,12 +919,20 @@ export default function FavoriteCoursesContent({
       </div>
     );
   }
+  const handleRefresh = useCallback(() => {
+    window.location.reload();
+  }, []);
 
   return (
     <div className="min-h-screen py-8 max-w-[86rem] lg:w-[86rem]">
       <ToastContainer />
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="py-2 sm:py-4 lg:py-4">
         <Card className="mb-8 shadow-md">
           <CardHeader className="space-y-4">
             <div className="flex items-center gap-3">
@@ -1032,14 +1043,22 @@ export default function FavoriteCoursesContent({
                 </Select>
               </div>
 
-              <div className="md:col-span-1 flex justify-end">
+              <div className="md:col-span-1 flex justify-end space-x-1 ">
+              <Button
+                  variant="outline"
+                  className="w-full md:w-auto h-10 hover:bg-gray-100"
+                  onClick={handleRefresh}
+                >
+                  <RefreshCw className="h-4 w-4" />
+                </Button>
                 <Button
                   variant="outline"
                   className="w-full md:w-auto h-10 hover:bg-gray-100"
                   onClick={() => clearFilter("all")}
                 >
-                  <SlidersHorizontal className="h-4 w-4" />
+                  <SearchX className="h-4 w-4" />
                 </Button>
+                
               </div>
             </div>
 
@@ -1085,6 +1104,7 @@ export default function FavoriteCoursesContent({
             )}
           </CardContent>
         </Card>
+        </motion.section>
 
         {/* เพิ่มปุ่มกลับไปหน้าค้นหารายวิชา */}
         <div className="flex justify-end mb-4">
