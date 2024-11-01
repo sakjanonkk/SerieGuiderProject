@@ -820,6 +820,7 @@ import {
   FlaskConical,
   BookOpen,
   ChevronRight,
+  Users,
 } from "lucide-react";
 import { CourseType } from "@/types/courseType";
 import FacultyCard from "@/components/CourseCard/FacultyCard";
@@ -843,15 +844,16 @@ const FACULTY_DATA: FacultyData[] = [
     accent: "from-blue-50 to-indigo-50",
     borderAccent: "group-hover:border-blue-200",
     description: "นวัตกรรมการศึกษาและการพัฒนาการเรียนรู้",
-  },
+  }
+  ,
   {
-    name: "คณะวิศวกรรมศาสตร์",
-    nameEn: "Faculty of Engineering",
-    id: "EN",
-    icon: Code,
-    accent: "from-emerald-50 to-green-50",
-    borderAccent: "group-hover:border-emerald-200",
-    description: "วิศวกรรมดิจิทัลและนวัตกรรม",
+    id: "MD",
+    name: "คณะแพทยศาสตร์",
+    nameEn: "Faculty of Medicine",
+    description: "มุ่งเน้นการศึกษาด้านการแพทย์และการรักษา",
+    icon: Users,
+    accent: "from-green-50 to-green-100",
+    borderAccent: "group-hover:border-green-200",
   },
   {
     name: "คณะวิทยาศาสตร์",

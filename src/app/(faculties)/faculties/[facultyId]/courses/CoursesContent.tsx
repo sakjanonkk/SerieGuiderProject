@@ -261,7 +261,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { CircleX, Search, SlidersHorizontal, BookOpen } from "lucide-react";
+import { CircleX, Search, SlidersHorizontal, BookOpen ,SearchX } from "lucide-react";
 import { CourseInfo } from "@/types/courseType";
 import { FACULTY_MAP } from "@/constants/faculty";
 
@@ -277,6 +277,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { motion } from "framer-motion";
 
 interface CoursesContentProps {
   facultyId: string;
@@ -380,6 +381,11 @@ export function CoursesContent({ facultyId }: CoursesContentProps) {
     <div className="min-h-screen sm:py-6 lg:py-6 max-w-[86rem] lg:w-[86rem]">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         {/* ส่วนหัว */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="py-2 sm:py-4 lg:py-4">
         <Card className="mb-8 shadow-md">
           <CardHeader className="space-y-4">
             <div className="flex items-center gap-3">
@@ -447,7 +453,7 @@ export function CoursesContent({ facultyId }: CoursesContentProps) {
                   className="w-full h-10 hover:bg-gray-100"
                   onClick={() => clearFilter("all")}
                 >
-                  <SlidersHorizontal className="h-4 w-4" />
+                  <SearchX className="h-4 w-4" />
                 </Button>
               </div>
             </div>
@@ -494,6 +500,7 @@ export function CoursesContent({ facultyId }: CoursesContentProps) {
             )}
           </CardContent>
         </Card>
+        </motion.section>
 
         {/* แสดงรายวิชา */}
         {filteredCourses.length > 0 ? (
